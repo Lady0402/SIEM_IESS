@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # SIEM IESS - Sistema de Información y Gestión de Eventos de Seguridad
 
 ## Descripción
@@ -82,3 +83,6 @@ Sistema de Información y Gestión de Eventos de Seguridad (SIEM) desarrollado p
 ## Acceso al Sistema
 
 - **URL**: http://127.0.0.1:8000
+=======
+# SIEM_IESS
+>>>>>>> 3cda840196b49a3b4799c8d82c8b0059ec2eb4f9
