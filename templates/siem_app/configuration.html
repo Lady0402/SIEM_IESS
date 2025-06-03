@@ -1,0 +1,572 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Configuración{% endblock %}
+{% block page_subtitle %}Configuración del sistema y preferencias{% endblock %}
+
+{% block content %}
+<!-- Configuration Sections -->
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Configuración</h5>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="#general" class="list-group-item list-group-item-action bg-transparent border-secondary active" data-bs-toggle="pill">
+                    <i class="fas fa-cog me-2"></i>General
+                </a>
+                <a href="#security" class="list-group-item list-group-item-action bg-transparent border-secondary" data-bs-toggle="pill">
+                    <i class="fas fa-shield-alt me-2"></i>Seguridad
+                </a>
+                <a href="#alerts" class="list-group-item list-group-item-action bg-transparent border-secondary" data-bs-toggle="pill">
+                    <i class="fas fa-bell me-2"></i>Alertas
+                </a>
+                <a href="#notifications" class="list-group-item list-group-item-action bg-transparent border-secondary" data-bs-toggle="pill">
+                    <i class="fas fa-envelope me-2"></i>Notificaciones
+                </a>
+                <a href="#backup" class="list-group-item list-group-item-action bg-transparent border-secondary" data-bs-toggle="pill">
+                    <i class="fas fa-database me-2"></i>Respaldo
+                </a>
+                <a href="#logs" class="list-group-item list-group-item-action bg-transparent border-secondary" data-bs-toggle="pill">
+                    <i class="fas fa-file-alt me-2"></i>Logs
+                </a>
+                <a href="#system" class="list-group-item list-group-item-action bg-transparent border-secondary" data-bs-toggle="pill">
+                    <i class="fas fa-server me-2"></i>Sistema
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-9">
+        <div class="tab-content">
+            <!-- General Configuration -->
+            <div class="tab-pane fade show active" id="general">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Configuración General</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Nombre del Sistema</label>
+                                        <input type="text" class="form-control" value="SIEM IESS">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Zona Horaria</label>
+                                        <select class="form-select">
+                                            <option selected>America/Guayaquil</option>
+                                            <option>America/Bogota</option>
+                                            <option>America/Lima</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Idioma del Sistema</label>
+                                        <select class="form-select">
+                                            <option selected>Español</option>
+                                            <option>English</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Tema</label>
+                                        <select class="form-select">
+                                            <option selected>Oscuro</option>
+                                            <option>Claro</option>
+                                            <option>Automático</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="realTimeMonitoring" checked>
+                                    <label class="form-check-label" for="realTimeMonitoring">
+                                        Monitoreo en Tiempo Real
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="autoRefresh" checked>
+                                    <label class="form-check-label" for="autoRefresh">
+                                        Actualización Automática del Dashboard
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Security Configuration -->
+            <div class="tab-pane fade" id="security">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Configuración de Seguridad</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Tiempo de Sesión (minutos)</label>
+                                        <input type="number" class="form-control" value="60">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Intentos de Login Máximos</label>
+                                        <input type="number" class="form-control" value="5">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Longitud Mínima de Contraseña</label>
+                                        <input type="number" class="form-control" value="8">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Días para Expiración de Contraseña</label>
+                                        <input type="number" class="form-control" value="90">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="twoFactorAuth">
+                                    <label class="form-check-label" for="twoFactorAuth">
+                                        Autenticación de Dos Factores
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="ipWhitelist" checked>
+                                    <label class="form-check-label" for="ipWhitelist">
+                                        Lista Blanca de IPs
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="auditLog" checked>
+                                    <label class="form-check-label" for="auditLog">
+                                        Registro de Auditoría
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Guardar Configuración</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Alerts Configuration -->
+            <div class="tab-pane fade" id="alerts">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Configuración de Alertas</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Umbral CPU Crítico (%)</label>
+                                        <input type="number" class="form-control" value="90">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Umbral Memoria Crítico (%)</label>
+                                        <input type="number" class="form-control" value="95">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Umbral Disco Crítico (%)</label>
+                                        <input type="number" class="form-control" value="85">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Temperatura Crítica (°C)</label>
+                                        <input type="number" class="form-control" value="70">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="autoIncidentCreation" checked>
+                                    <label class="form-check-label" for="autoIncidentCreation">
+                                        Creación Automática de Incidentes
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="alertEscalation" checked>
+                                    <label class="form-check-label" for="alertEscalation">
+                                        Escalación Automática de Alertas
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Guardar Configuración</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Notifications Configuration -->
+            <div class="tab-pane fade" id="notifications">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Configuración de Notificaciones</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Servidor SMTP</label>
+                                <input type="text" class="form-control" value="smtp.iess.gob.ec">
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Puerto SMTP</label>
+                                        <input type="number" class="form-control" value="587">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Email del Sistema</label>
+                                        <input type="email" class="form-control" value="siem@iess.gob.ec">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                    <label class="form-check-label" for="emailNotifications">
+                                        Notificaciones por Email
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="smsNotifications">
+                                    <label class="form-check-label" for="smsNotifications">
+                                        Notificaciones por SMS
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="slackIntegration">
+                                    <label class="form-check-label" for="slackIntegration">
+                                        Integración con Slack
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Guardar Configuración</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Backup Configuration -->
+            <div class="tab-pane fade" id="backup">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Configuración de Respaldo</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Frecuencia de Respaldo</label>
+                                        <select class="form-select">
+                                            <option>Diario</option>
+                                            <option selected>Semanal</option>
+                                            <option>Mensual</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Hora de Respaldo</label>
+                                        <input type="time" class="form-control" value="02:00">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Ruta de Respaldo</label>
+                                <input type="text" class="form-control" value="/backup/siem/">
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Retención (días)</label>
+                                        <input type="number" class="form-control" value="30">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Compresión</label>
+                                        <select class="form-select">
+                                            <option selected>Gzip</option>
+                                            <option>Zip</option>
+                                            <option>Sin compresión</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="autoBackup" checked>
+                                    <label class="form-check-label" for="autoBackup">
+                                        Respaldo Automático
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-success me-2">
+                                    <i class="fas fa-play"></i> Ejecutar Respaldo Ahora
+                                </button>
+                                <button type="button" class="btn btn-info">
+                                    <i class="fas fa-download"></i> Descargar Último Respaldo
+                                </button>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Guardar Configuración</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logs Configuration -->
+            <div class="tab-pane fade" id="logs">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Configuración de Logs</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Nivel de Log</label>
+                                        <select class="form-select">
+                                            <option>DEBUG</option>
+                                            <option selected>INFO</option>
+                                            <option>WARNING</option>
+                                            <option>ERROR</option>
+                                            <option>CRITICAL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Retención de Logs (días)</label>
+                                        <input type="number" class="form-control" value="365">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Tamaño Máximo por Archivo (MB)</label>
+                                        <input type="number" class="form-control" value="100">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Archivos de Rotación</label>
+                                        <input type="number" class="form-control" value="10">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="syslogIntegration" checked>
+                                    <label class="form-check-label" for="syslogIntegration">
+                                        Integración con Syslog
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="logCompression" checked>
+                                    <label class="form-check-label" for="logCompression">
+                                        Compresión de Logs Antiguos
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Guardar Configuración</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- System Configuration -->
+            <div class="tab-pane fade" id="system">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Información del Sistema</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="table table-dark">
+                                    <tr>
+                                        <td><strong>Versión del Sistema:</strong></td>
+                                        <td>SIEM IESS v2.1.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Django:</strong></td>
+                                        <td>4.2.7</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Python:</strong></td>
+                                        <td>3.11.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Base de Datos:</strong></td>
+                                        <td>SQLite 3.42.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Servidor Web:</strong></td>
+                                        <td>Django Development Server</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="table table-dark">
+                                    <tr>
+                                        <td><strong>Tiempo de Actividad:</strong></td>
+                                        <td>15 días, 8 horas</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Última Actualización:</strong></td>
+                                        <td>15/12/2024 14:30</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Espacio en Disco:</strong></td>
+                                        <td>2.5 GB / 50 GB</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Memoria RAM:</strong></td>
+                                        <td>1.2 GB / 8 GB</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>CPU:</strong></td>
+                                        <td>Intel Core i7-9700K</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6>Acciones del Sistema</h6>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-warning">
+                                    <i class="fas fa-sync"></i> Reiniciar Servicios
+                                </button>
+                                <button type="button" class="btn btn-info">
+                                    <i class="fas fa-download"></i> Exportar Configuración
+                                </button>
+                                <button type="button" class="btn btn-success">
+                                    <i class="fas fa-upload"></i> Importar Configuración
+                                </button>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="fas fa-trash"></i> Limpiar Cache
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Configuration form handling
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show success message
+        const alert = document.createElement('div');
+        alert.className = 'alert alert-success alert-dismissible fade show';
+        alert.innerHTML = `
+            Configuración guardada exitosamente
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        
+        this.insertBefore(alert, this.firstChild);
+        
+        // Auto-dismiss after 3 seconds
+        setTimeout(() => {
+            alert.remove();
+        }, 3000);
+    });
+});
+
+// System actions
+document.querySelector('.btn-warning').addEventListener('click', function() {
+    if (confirm('¿Está seguro de que desea reiniciar los servicios?')) {
+        alert('Servicios reiniciados exitosamente');
+    }
+});
+
+document.querySelector('.btn-danger').addEventListener('click', function() {
+    if (confirm('¿Está seguro de que desea limpiar el cache?')) {
+        alert('Cache limpiado exitosamente');
+    }
+});
+</script>
+{% endblock %}

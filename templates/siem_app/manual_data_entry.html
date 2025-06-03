@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Ingreso Manual de Datos{% endblock %}
+{% block page_subtitle %}Crear eventos de seguridad manualmente{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Crear Evento de Seguridad Manual</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Tipo de Evento *</label>
+                                <input type="text" name="event_type" class="form-control" required 
+                                       placeholder="Ej: Port Scan, Malware Detection">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">IP Origen *</label>
+                                <input type="text" name="source_ip" class="form-control" required 
+                                       placeholder="Ej: 192.168.1.100">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">IP Destino</label>
+                                <input type="text" name="destination_ip" class="form-control" 
+                                       placeholder="Ej: 10.0.1.50">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label">Puerto Origen</label>
+                                <input type="number" name="source_port" class="form-control" 
+                                       placeholder="Ej: 45678">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label">Puerto Destino</label>
+                                <input type="number" name="destination_port" class="form-control" 
+                                       placeholder="Ej: 22">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label class="form-label">Protocolo</label>
+                                <select name="protocol" class="form-select">
+                                    <option value="TCP">TCP</option>
+                                    <option value="UDP">UDP</option>
+                                    <option value="ICMP">ICMP</option>
+                                    <option value="HTTP">HTTP</option>
+                                    <option value="HTTPS">HTTPS</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label class="form-label">Categoría *</label>
+                                <select name="category" class="form-select" required>
+                                    <option value="">Seleccionar categoría...</option>
+                                    {% for value, label in category_choices %}
+                                        <option value="{{ value }}">{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label class="form-label">Severidad *</label>
+                                <select name="severity" class="form-select" required>
+                                    <option value="">Seleccionar severidad...</option>
+                                    {% for value, label in severity_choices %}
+                                        <option value="{{ value }}">{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Descripción *</label>
+                        <textarea name="description" class="form-control" rows="4" required
+                                  placeholder="Descripción detallada del evento de seguridad..."></textarea>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'events' %}" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Volver a Eventos
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Crear Evento
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

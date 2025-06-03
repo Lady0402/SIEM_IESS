@@ -1,0 +1,304 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Centro de Reportes{% endblock %}
+{% block page_subtitle %}Generación y gestión de informes de seguridad{% endblock %}
+
+{% block content %}
+<!-- Report Metrics -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="metric-card">
+            <div class="metric-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="metric-value">{{ total_incidents }}</div>
+            <div class="metric-label">Total Incidentes</div>
+            <small class="text-muted">Registrados en el sistema</small>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="metric-card success">
+            <div class="metric-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="metric-value">{{ resolved_incidents }}</div>
+            <div class="metric-label">Incidentes Resueltos</div>
+            <small class="text-muted">Casos cerrados exitosamente</small>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="metric-card warning">
+            <div class="metric-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="metric-value">{{ avg_response_time }}</div>
+            <div class="metric-label">Tiempo Promedio</div>
+            <small class="text-muted">Respuesta a incidentes (horas)</small>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="metric-card">
+            <div class="metric-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="metric-value">{{ security_score }}%</div>
+            <div class="metric-label">Puntuación Seguridad</div>
+            <small class="text-muted">Nivel general del sistema</small>
+        </div>
+    </div>
+</div>
+
+<!-- Report Generation Section -->
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Generar Nuevo Reporte</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Tipo de Reporte</label>
+                                <select name="report_type" class="form-select" required>
+                                    <option value="">Seleccionar tipo...</option>
+                                    {% for value, label in report_types %}
+                                        <option value="{{ value }}">{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Período</label>
+                                <select name="period" class="form-select" required>
+                                    <option value="">Seleccionar período...</option>
+                                    <option value="last_7_days">Últimos 7 días</option>
+                                    <option value="last_30_days">Últimos 30 días</option>
+                                    <option value="last_90_days">Últimos 90 días</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Descripción (Opcional)</label>
+                        <textarea name="description" class="form-control" rows="3" placeholder="Descripción del reporte..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-file-pdf"></i> Generar Reporte
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Recent Reports -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Reportes Recientes</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Tipo</th>
+                                <th>Generado por</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for report in recent_reports %}
+                            <tr>
+                                <td>
+                                    <strong>{{ report.title }}</strong>
+                                    <div class="text-muted small">
+                                        {{ report.date_from|date:"d/m/Y" }} - {{ report.date_to|date:"d/m/Y" }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-info">{{ report.get_report_type_display }}</span>
+                                </td>
+                                <td>{{ report.generated_by.get_full_name|default:report.generated_by.username }}</td>
+                                <td>{{ report.created_at|date:"d/m/Y H:i" }}</td>
+                                <td>
+                                    {% if report.file_path %}
+                                        <span class="badge bg-success">Completado</span>
+                                    {% else %}
+                                        <span class="badge bg-warning">Procesando</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if report.file_path %}
+                                        <a href="{% url 'export_report' report.id %}" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-download"></i> Descargar
+                                        </a>
+                                    {% else %}
+                                        <button class="btn btn-sm btn-outline-secondary" disabled>
+                                            <i class="fas fa-spinner fa-spin"></i> Procesando
+                                        </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="6" class="text-center text-muted py-4">
+                                    No hay reportes generados
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <!-- Report Templates -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Plantillas de Reportes</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item bg-transparent border-secondary">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">Reporte de Seguridad</h6>
+                                <small class="text-muted">Análisis completo de eventos</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary">Usar</button>
+                        </div>
+                    </div>
+                    <div class="list-group-item bg-transparent border-secondary">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">Reporte de Incidentes</h6>
+                                <small class="text-muted">Resumen de incidentes</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary">Usar</button>
+                        </div>
+                    </div>
+                    <div class="list-group-item bg-transparent border-secondary">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">Reporte de Rendimiento</h6>
+                                <small class="text-muted">Métricas del sistema</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary">Usar</button>
+                        </div>
+                    </div>
+                    <div class="list-group-item bg-transparent border-secondary">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">Análisis de Amenazas</h6>
+                                <small class="text-muted">Inteligencia de amenazas</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary">Usar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Report Statistics -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Estadísticas</h5>
+            </div>
+            <div class="card-body">
+                <div class="chart-container">
+                    <canvas id="reportChart" style="height: 200px;"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scheduled Reports -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Reportes Programados</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item bg-transparent border-secondary">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="mb-1">Reporte Semanal</h6>
+                                <small class="text-muted">Cada lunes a las 08:00</small>
+                            </div>
+                            <span class="badge bg-success">Activo</span>
+                        </div>
+                    </div>
+                    <div class="list-group-item bg-transparent border-secondary">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6 class="mb-1">Reporte Mensual</h6>
+                                <small class="text-muted">Primer día del mes</small>
+                            </div>
+                            <span class="badge bg-success">Activo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Report Statistics Chart
+const reportCtx = document.getElementById('reportChart').getContext('2d');
+const reportChart = new Chart(reportCtx, {
+    type: 'line',
+    data: {
+        labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+        datasets: [{
+            label: 'Reportes Generados',
+            data: [12, 19, 15, 25, 22, 30],
+            borderColor: '#06b6d4',
+            backgroundColor: 'rgba(6, 182, 212, 0.1)',
+            tension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: {
+                    color: '#334155'
+                },
+                ticks: {
+                    color: '#94a3b8'
+                }
+            },
+            x: {
+                grid: {
+                    color: '#334155'
+                },
+                ticks: {
+                    color: '#94a3b8'
+                }
+            }
+        }
+    }
+});
+</script>
+{% endblock %}

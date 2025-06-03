@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Centro de Seguridad{% endblock %}
+{% block page_subtitle %}Gestión de reglas y políticas de seguridad{% endblock %}
+
+{% block content %}
+<!-- Security Overview Cards -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="metric-card success">
+            <div class="metric-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="metric-value">{{ rules.count }}</div>
+            <div class="metric-label">Reglas Activas</div>
+            <small class="text-muted">Reglas de seguridad configuradas</small>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="metric-card warning">
+            <div class="metric-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="metric-value">15</div>
+            <div class="metric-label">Amenazas Detectadas</div>
+            <small class="text-muted">Últimas 24 horas</small>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="metric-card">
+            <div class="metric-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="metric-value">98.5%</div>
+            <div class="metric-label">Nivel de Protección</div>
+            <small class="text-muted">Estado general del sistema</small>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="metric-card danger">
+            <div class="metric-icon">
+                <i class="fas fa-bug"></i>
+            </div>
+            <div class="metric-value">3</div>
+            <div class="metric-label">Vulnerabilidades</div>
+            <small class="text-muted">Requieren atención</small>
+        </div>
+    </div>
+</div>
+
+<!-- Security Rules Section -->
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Reglas de Seguridad</h5>
+                <button class="btn btn-primary btn-sm">
+                    <i class="fas fa-plus"></i> Nueva Regla
+                </button>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Severidad</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for rule in rules %}
+                            <tr>
+                                <td>
+                                    <strong>{{ rule.name }}</strong>
+                                    <div class="text-muted small">{{ rule.description|truncatechars:50 }}</div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-info">{{ rule.get_rule_type_display }}</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-{% if rule.severity == 'critical' %}danger{% elif rule.severity == 'high' %}warning{% elif rule.severity == 'medium' %}info{% else %}success{% endif %}">
+                                        {{ rule.get_severity_display }}
+                                    </span>
+                                </td>
+                                <td>
+                                    {% if rule.is_active %}
+                                        <span class="status-indicator online"></span>Activa
+                                    {% else %}
+                                        <span class="status-indicator offline"></span>Inactiva
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary me-1">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5" class="text-center text-muted py-4">
+                                    No hay reglas de seguridad configuradas
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Threat Intelligence -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Inteligencia de Amenazas</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>IPs Maliciosas Bloqueadas</h6>
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item bg-transparent border-secondary">
+                                <div class="d-flex justify-content-between">
+                                    <span>192.168.1.100</span>
+                                    <span class="badge bg-danger">Crítico</span>
+                                </div>
+                                <small class="text-muted">Intento de intrusión detectado</small>
+                            </div>
+                            <div class="list-group-item bg-transparent border-secondary">
+                                <div class="d-flex justify-content-between">
+                                    <span>203.243.12.165</span>
+                                    <span class="badge bg-warning">Alto</span>
+                                </div>
+                                <small class="text-muted">Escaneo de puertos</small>
+                            </div>
+                            <div class="list-group-item bg-transparent border-secondary">
+                                <div class="d-flex justify-content-between">
+                                    <span>129.210.209.4</span>
+                                    <span class="badge bg-info">Medio</span>
+                                </div>
+                                <small class="text-muted">Actividad sospechosa</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Dominios Maliciosos</h6>
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item bg-transparent border-secondary">
+                                <div class="d-flex justify-content-between">
+                                    <span>malicious-site.com</span>
+                                    <span class="badge bg-danger">Crítico</span>
+                                </div>
+                                <small class="text-muted">Distribución de malware</small>
+                            </div>
+                            <div class="list-group-item bg-transparent border-secondary">
+                                <div class="d-flex justify-content-between">
+                                    <span>phishing-bank.net</span>
+                                    <span class="badge bg-warning">Alto</span>
+                                </div>
+                                <small class="text-muted">Sitio de phishing</small>
+                            </div>
+                            <div class="list-group-item bg-transparent border-secondary">
+                                <div class="d-flex justify-content-between">
+                                    <span>suspicious-domain.org</span>
+                                    <span class="badge bg-info">Medio</span>
+                                </div>
+                                <small class="text-muted">Dominio sospechoso</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <!-- Security Status -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Estado de Seguridad</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Firewall</span>
+                        <span class="text-success">Activo</span>
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-success" style="width: 100%"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Antivirus</span>
+                        <span class="text-success">Actualizado</span>
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-success" style="width: 95%"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>IDS/IPS</span>
+                        <span class="text-warning">Advertencia</span>
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-warning" style="width: 75%"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Backup</span>
+                        <span class="text-success">Completado</span>
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-success" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recent Security Events -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Eventos de Seguridad</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="log-entry">
+                    <div class="log-level CRITICAL">CRÍTICO</div>
+                    <div class="log-message">
+                        <strong>Intento de intrusión bloqueado</strong>
+                        <div class="text-muted small">IP: 192.168.1.100</div>
+                    </div>
+                    <div class="log-timestamp">15:30</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-level WARNING">ALERTA</div>
+                    <div class="log-message">
+                        <strong>Múltiples intentos de login</strong>
+                        <div class="text-muted small">Usuario: admin</div>
+                    </div>
+                    <div class="log-timestamp">15:25</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-level INFO">INFO</div>
+                    <div class="log-message">
+                        <strong>Regla actualizada</strong>
+                        <div class="text-muted small">Detección de Port Scan</div>
+                    </div>
+                    <div class="log-timestamp">15:20</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

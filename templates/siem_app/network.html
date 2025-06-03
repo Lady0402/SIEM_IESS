@@ -1,0 +1,478 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Monitoreo de Red{% endblock %}
+{% block page_subtitle %}Supervisión en tiempo real de la infraestructura de red{% endblock %}
+
+{% block content %}
+<!-- Network Overview -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="metric-card success">
+            <div class="metric-icon">
+                <i class="fas fa-network-wired"></i>
+            </div>
+            <div class="metric-value">24</div>
+            <div class="metric-label">Dispositivos Activos</div>
+            <small class="text-muted">Conectados a la red</small>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="metric-card">
+            <div class="metric-icon">
+                <i class="fas fa-exchange-alt"></i>
+            </div>
+            <div class="metric-value">1.2 GB/s</div>
+            <div class="metric-label">Tráfico de Red</div>
+            <small class="text-muted">Velocidad actual</small>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="metric-card warning">
+            <div class="metric-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="metric-value">3</div>
+            <div class="metric-label">Alertas de Red</div>
+            <small class="text-muted">Requieren atención</small>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="metric-card">
+            <div class="metric-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="metric-value">99.8%</div>
+            <div class="metric-label">Disponibilidad</div>
+            <small class="text-muted">Uptime de la red</small>
+        </div>
+    </div>
+</div>
+
+<!-- Network Topology and Traffic -->
+<div class="row mb-4">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Topología de Red</h5>
+            </div>
+            <div class="card-body">
+                <div class="network-topology">
+                    <div class="network-diagram">
+                        <!-- Core Network -->
+                        <div class="network-device core-switch" style="top: 50%; left: 50%;">
+                            <i class="fas fa-server"></i>
+                            <span>Core Switch</span>
+                            <div class="device-status online"></div>
+                        </div>
+                        
+                        <!-- Firewalls -->
+                        <div class="network-device firewall" style="top: 20%; left: 30%;">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Firewall 1</span>
+                            <div class="device-status online"></div>
+                        </div>
+                        <div class="network-device firewall" style="top: 20%; left: 70%;">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Firewall 2</span>
+                            <div class="device-status online"></div>
+                        </div>
+                        
+                        <!-- Switches -->
+                        <div class="network-device switch" style="top: 80%; left: 20%;">
+                            <i class="fas fa-network-wired"></i>
+                            <span>Switch A</span>
+                            <div class="device-status online"></div>
+                        </div>
+                        <div class="network-device switch" style="top: 80%; left: 50%;">
+                            <i class="fas fa-network-wired"></i>
+                            <span>Switch B</span>
+                            <div class="device-status warning"></div>
+                        </div>
+                        <div class="network-device switch" style="top: 80%; left: 80%;">
+                            <i class="fas fa-network-wired"></i>
+                            <span>Switch C</span>
+                            <div class="device-status online"></div>
+                        </div>
+                        
+                        <!-- Routers -->
+                        <div class="network-device router" style="top: 50%; left: 10%;">
+                            <i class="fas fa-route"></i>
+                            <span>Router WAN</span>
+                            <div class="device-status online"></div>
+                        </div>
+                        <div class="network-device router" style="top: 50%; left: 90%;">
+                            <i class="fas fa-route"></i>
+                            <span>Router DMZ</span>
+                            <div class="device-status online"></div>
+                        </div>
+                        
+                        <!-- Connection Lines -->
+                        <svg class="network-connections">
+                            <line x1="50%" y1="50%" x2="30%" y2="20%" stroke="#06b6d4" stroke-width="2"/>
+                            <line x1="50%" y1="50%" x2="70%" y2="20%" stroke="#06b6d4" stroke-width="2"/>
+                            <line x1="50%" y1="50%" x2="20%" y2="80%" stroke="#06b6d4" stroke-width="2"/>
+                            <line x1="50%" y1="50%" x2="50%" y2="80%" stroke="#f59e0b" stroke-width="2"/>
+                            <line x1="50%" y1="50%" x2="80%" y2="80%" stroke="#06b6d4" stroke-width="2"/>
+                            <line x1="50%" y1="50%" x2="10%" y2="50%" stroke="#06b6d4" stroke-width="2"/>
+                            <line x1="50%" y1="50%" x2="90%" y2="50%" stroke="#06b6d4" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Tráfico de Red</h5>
+            </div>
+            <div class="card-body">
+                <div style="position: relative; height: 300px;">
+                    <canvas id="networkTrafficChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Network Devices and Bandwidth -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Dispositivos de Red</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Dispositivo</th>
+                                <th>IP</th>
+                                <th>Tipo</th>
+                                <th>Estado</th>
+                                <th>Uptime</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <i class="fas fa-server text-primary me-2"></i>
+                                    Core Switch
+                                </td>
+                                <td>10.0.1.1</td>
+                                <td><span class="badge bg-info">Switch</span></td>
+                                <td><span class="status-indicator online"></span>Online</td>
+                                <td>365 días</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-cog"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fas fa-shield-alt text-success me-2"></i>
+                                    Firewall Principal
+                                </td>
+                                <td>10.0.1.2</td>
+                                <td><span class="badge bg-success">Firewall</span></td>
+                                <td><span class="status-indicator online"></span>Online</td>
+                                <td>180 días</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-cog"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fas fa-route text-warning me-2"></i>
+                                    Router WAN
+                                </td>
+                                <td>10.0.1.3</td>
+                                <td><span class="badge bg-warning">Router</span></td>
+                                <td><span class="status-indicator online"></span>Online</td>
+                                <td>90 días</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-cog"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i class="fas fa-network-wired text-info me-2"></i>
+                                    Switch Piso 2
+                                </td>
+                                <td>10.0.1.10</td>
+                                <td><span class="badge bg-info">Switch</span></td>
+                                <td><span class="status-indicator warning"></span>Warning</td>
+                                <td>45 días</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-warning">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Uso de Ancho de Banda</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Entrada (Download)</span>
+                        <span class="text-info">850 Mbps / 1 Gbps</span>
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-info" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Salida (Upload)</span>
+                        <span class="text-success">420 Mbps / 1 Gbps</span>
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-success" style="width: 42%"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Tráfico Interno</span>
+                        <span class="text-warning">650 Mbps / 10 Gbps</span>
+                    </div>
+                    <div class="progress mb-3">
+                        <div class="progress-bar bg-warning" style="width: 6.5%"></div>
+                    </div>
+                </div>
+                
+                <div class="row text-center">
+                    <div class="col-4">
+                        <div class="metric-value text-info">1.27 GB</div>
+                        <div class="metric-label">Entrada Total</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="metric-value text-success">0.84 GB</div>
+                        <div class="metric-label">Salida Total</div>
+                    </div>
+                    <div class="col-4">
+                        <div class="metric-value text-warning">2.11 GB</div>
+                        <div class="metric-label">Total Hoy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Network Alerts -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Alertas de Red</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="log-entry">
+                    <div class="log-level WARNING">ALERTA</div>
+                    <div class="log-message">
+                        <strong>Alto uso de ancho de banda</strong>
+                        <div class="text-muted small">Switch Piso 2 - 85% utilización</div>
+                    </div>
+                    <div class="log-timestamp">15:30</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-level INFO">INFO</div>
+                    <div class="log-message">
+                        <strong>Dispositivo reconectado</strong>
+                        <div class="text-muted small">Router DMZ - Conexión restaurada</div>
+                    </div>
+                    <div class="log-timestamp">14:45</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-level CRITICAL">CRÍTICO</div>
+                    <div class="log-message">
+                        <strong>Intento de intrusión bloqueado</strong>
+                        <div class="text-muted small">Firewall - IP: 203.243.12.165</div>
+                    </div>
+                    <div class="log-timestamp">14:20</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.network-topology {
+    height: 400px;
+    position: relative;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.network-diagram {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.network-device {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: var(--secondary-color);
+    border: 2px solid #334155;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    text-align: center;
+    min-width: 80px;
+    color: white;
+    font-size: 0.75rem;
+    transition: all 0.3s;
+}
+
+.network-device:hover {
+    border-color: var(--accent-color);
+    transform: translate(-50%, -50%) scale(1.1);
+    z-index: 10;
+}
+
+.network-device i {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.network-device.core-switch i {
+    color: #06b6d4;
+}
+
+.network-device.firewall i {
+    color: #10b981;
+}
+
+.network-device.switch i {
+    color: #8b5cf6;
+}
+
+.network-device.router i {
+    color: #f59e0b;
+}
+
+.device-status {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--secondary-color);
+}
+
+.device-status.online {
+    background-color: var(--success-color);
+}
+
+.device-status.warning {
+    background-color: var(--warning-color);
+}
+
+.device-status.offline {
+    background-color: var(--danger-color);
+}
+
+.network-connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Network Traffic Chart
+const networkTrafficCtx = document.getElementById('networkTrafficChart').getContext('2d');
+const networkTrafficChart = new Chart(networkTrafficCtx, {
+    type: 'line',
+    data: {
+        labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+        datasets: [{
+            label: 'Entrada (Mbps)',
+            data: [200, 150, 400, 850, 750, 600],
+            borderColor: '#06b6d4',
+            backgroundColor: 'rgba(6, 182, 212, 0.1)',
+            tension: 0.4
+        }, {
+            label: 'Salida (Mbps)',
+            data: [100, 80, 250, 420, 380, 300],
+            borderColor: '#10b981',
+            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            tension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#94a3b8'
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: {
+                    color: '#334155'
+                },
+                ticks: {
+                    color: '#94a3b8'
+                }
+            },
+            x: {
+                grid: {
+                    color: '#334155'
+                },
+                ticks: {
+                    color: '#94a3b8'
+                }
+            }
+        }
+    }
+});
+
+// Real-time updates
+setInterval(() => {
+    // Simulate real-time data updates
+    const newInbound = Math.floor(Math.random() * 200) + 600;
+    const newOutbound = Math.floor(Math.random() * 150) + 300;
+    
+    // Update chart data
+    networkTrafficChart.data.datasets[0].data.shift();
+    networkTrafficChart.data.datasets[0].data.push(newInbound);
+    networkTrafficChart.data.datasets[1].data.shift();
+    networkTrafficChart.data.datasets[1].data.push(newOutbound);
+    
+    networkTrafficChart.update('none');
+}, 5000);
+</script>
+{% endblock %}

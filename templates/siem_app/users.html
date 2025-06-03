@@ -1,0 +1,374 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Gestión de Usuarios{% endblock %}
+{% block page_subtitle %}Administración de usuarios y permisos del sistema{% endblock %}
+
+{% block content %}
+<!-- User Statistics -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="metric-card">
+            <div class="metric-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="metric-value">{{ users.count }}</div>
+            <div class="metric-label">Total Usuarios</div>
+            <small class="text-muted">Usuarios registrados</small>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="metric-card success">
+            <div class="metric-icon">
+                <i class="fas fa-user-check"></i>
+            </div>
+            <div class="metric-value">{{ users|length }}</div>
+            <div class="metric-label">Usuarios Activos</div>
+            <small class="text-muted">Conectados hoy</small>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="metric-card warning">
+            <div class="metric-icon">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <div class="metric-value">3</div>
+            <div class="metric-label">Administradores</div>
+            <small class="text-muted">Usuarios con privilegios</small>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="metric-card danger">
+            <div class="metric-icon">
+                <i class="fas fa-user-lock"></i>
+            </div>
+            <div class="metric-value">0</div>
+            <div class="metric-label">Usuarios Bloqueados</div>
+            <small class="text-muted">Cuentas suspendidas</small>
+        </div>
+    </div>
+</div>
+
+<!-- Users Management -->
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Lista de Usuarios</h5>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                    <i class="fas fa-plus"></i> Nuevo Usuario
+                </button>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Departamento</th>
+                                <th>Último Acceso</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-circle me-2">
+                                            {{ user.first_name|first|default:user.username|first|upper }}
+                                        </div>
+                                        <div>
+                                            <strong>{{ user.get_full_name|default:user.username }}</strong>
+                                            <div class="text-muted small">@{{ user.username }}</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{ user.email }}</td>
+                                <td>
+                                    {% if user.userprofile %}
+                                        <span class="badge bg-{% if user.userprofile.role == 'admin' %}danger{% elif user.userprofile.role == 'analyst' %}warning{% elif user.userprofile.role == 'operator' %}info{% else %}secondary{% endif %}">
+                                            {{ user.userprofile.get_role_display }}
+                                        </span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">Sin rol</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if user.userprofile %}
+                                        {{ user.userprofile.department|default:"No asignado" }}
+                                    {% else %}
+                                        No asignado
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if user.last_login %}
+                                        {{ user.last_login|date:"d/m/Y H:i" }}
+                                    {% else %}
+                                        Nunca
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if user.is_active %}
+                                        <span class="status-indicator online"></span>Activo
+                                    {% else %}
+                                        <span class="status-indicator offline"></span>Inactivo
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-sm btn-outline-primary" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-warning" title="Permisos">
+                                            <i class="fas fa-key"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger" title="Eliminar">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="7" class="text-center text-muted py-4">
+                                    No hay usuarios registrados
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <!-- User Roles -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Roles del Sistema</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item bg-transparent border-secondary">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1 text-danger">Administrador</h6>
+                                <small class="text-muted">Acceso completo al sistema</small>
+                            </div>
+                            <span class="badge bg-danger">3</span>
+                        </div>
+                    </div>
+                    <div class="list-group-item bg-transparent border-secondary">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1 text-warning">Analista</h6>
+                                <small class="text-muted">Análisis de eventos y alertas</small>
+                            </div>
+                            <span class="badge bg-warning">5</span>
+                        </div>
+                    </div>
+                    <div class="list-group-item bg-transparent border-secondary">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1 text-info">Operador</h6>
+                                <small class="text-muted">Monitoreo y respuesta</small>
+                            </div>
+                            <span class="badge bg-info">8</span>
+                        </div>
+                    </div>
+                    <div class="list-group-item bg-transparent border-secondary">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1 text-secondary">Visualizador</h6>
+                                <small class="text-muted">Solo lectura</small>
+                            </div>
+                            <span class="badge bg-secondary">12</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recent Activity -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Actividad Reciente</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="log-entry">
+                    <div class="log-level INFO">LOGIN</div>
+                    <div class="log-message">
+                        <strong>admin@iess.gob.ec</strong>
+                        <div class="text-muted small">Inicio de sesión exitoso</div>
+                    </div>
+                    <div class="log-timestamp">15:30</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-level WARNING">FAILED</div>
+                    <div class="log-message">
+                        <strong>usuario@test.com</strong>
+                        <div class="text-muted small">Intento de login fallido</div>
+                    </div>
+                    <div class="log-timestamp">15:25</div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-level INFO">CREATE</div>
+                    <div class="log-message">
+                        <strong>Nuevo usuario creado</strong>
+                        <div class="text-muted small">analista2@iess.gob.ec</div>
+                    </div>
+                    <div class="log-timestamp">14:45</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- User Statistics Chart -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Distribución por Roles</h5>
+            </div>
+            <div class="card-body">
+                <div style="position: relative; height: 200px;">
+                    <canvas id="userRolesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add User Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content bg-secondary">
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title">Nuevo Usuario</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" name="first_name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Apellido</label>
+                        <input type="text" name="last_name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nombre de Usuario</label>
+                        <input type="text" name="username" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Rol</label>
+                        <select name="role" class="form-select" required>
+                            <option value="">Seleccionar rol...</option>
+                            <option value="admin">Administrador</option>
+                            <option value="analyst">Analista</option>
+                            <option value="operator">Operador</option>
+                            <option value="viewer">Visualizador</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Departamento</label>
+                        <input type="text" name="department" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña Temporal</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-secondary">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Crear Usuario</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.avatar-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// User Roles Chart
+const userRolesCtx = document.getElementById('userRolesChart').getContext('2d');
+const userRolesChart = new Chart(userRolesCtx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Administrador', 'Analista', 'Operador', 'Visualizador'],
+        datasets: [{
+            data: [3, 5, 8, 12],
+            backgroundColor: ['#ef4444', '#f59e0b', '#06b6d4', '#6b7280'],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    color: '#94a3b8',
+                    padding: 15
+                }
+            }
+        }
+    }
+});
+
+// Create user function
+document.querySelector('#addUserModal form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    
+    fetch('/create-user/', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert(data.message);
+            location.reload();
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al crear usuario');
+    });
+});
+</script>
+{% endblock %}

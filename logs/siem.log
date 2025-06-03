@@ -1,0 +1,1841 @@
+INFO 2025-06-02 18:22:32,968 autoreload 1968 17132 Watching for file changes with StatReloader
+INFO 2025-06-02 18:22:40,969 autoreload 9084 23508 Watching for file changes with StatReloader
+INFO 2025-06-02 18:22:50,050 basehttp 9084 14924 "GET / HTTP/1.1" 200 26257
+INFO 2025-06-02 18:22:50,120 basehttp 9084 14924 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:22:50,120 basehttp 9084 22868 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:22:50,147 basehttp 9084 14924 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:22:50,148 basehttp 9084 22868 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+ERROR 2025-06-02 18:22:59,574 log 9084 22868 Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: siem_app_systemlog
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\views.py", line 44, in login_view
+    SystemLog.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~~^
+        level='WARNING',
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        ip_address=request.META.get('REMOTE_ADDR')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 679, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 892, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 998, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1161, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\models\base.py", line 1202, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\models\query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\models\sql\compiler.py", line 1836, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: siem_app_systemlog
+ERROR 2025-06-02 18:22:59,587 basehttp 9084 22868 "POST / HTTP/1.1" 500 168374
+INFO 2025-06-02 18:26:20,746 autoreload 22820 24864 Watching for file changes with StatReloader
+INFO 2025-06-02 18:26:29,572 basehttp 22820 15408 "GET / HTTP/1.1" 200 26408
+INFO 2025-06-02 18:26:29,740 basehttp 22820 15408 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:26:29,740 basehttp 22820 20316 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:26:29,744 basehttp 22820 20316 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:26:29,744 basehttp 22820 15408 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:26:39,246 basehttp 22820 25848 "POST / HTTP/1.1" 200 26408
+INFO 2025-06-02 18:26:39,266 basehttp 22820 25848 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:26:39,266 basehttp 22820 2368 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:26:39,279 basehttp 22820 25848 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:26:39,280 basehttp 22820 2368 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:26:47,164 basehttp 22820 12968 "GET / HTTP/1.1" 200 26257
+INFO 2025-06-02 18:26:47,270 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:26:47,270 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:26:47,307 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:26:47,311 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:26:49,609 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:26:49,610 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:26:49,613 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:26:49,613 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:26:54,537 basehttp 22820 25080 "POST / HTTP/1.1" 200 26408
+INFO 2025-06-02 18:26:54,559 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:26:54,559 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:26:54,570 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:26:54,575 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:26:59,610 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:26:59,610 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:26:59,613 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:26:59,613 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:04,572 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:04,572 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:04,575 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:04,576 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:09,617 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:09,617 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:09,620 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:09,620 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:14,560 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:14,563 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:14,564 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:14,567 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:19,605 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:19,605 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:19,609 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:19,609 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:24,566 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:24,566 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:24,570 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:24,570 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:29,614 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:29,614 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:29,618 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:29,618 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:34,567 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:34,567 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:34,571 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:34,571 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:39,605 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:39,605 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:39,608 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:39,609 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:44,572 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:44,572 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:44,575 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:44,575 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:49,610 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:49,611 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:49,614 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:49,614 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:54,572 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:54,573 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:27:54,576 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:27:54,576 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:04,563 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:04,563 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:04,566 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:04,567 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:14,571 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:14,571 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:14,575 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:14,575 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:24,560 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:24,560 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:24,563 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:24,563 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:24,612 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:24,612 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:24,615 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:24,615 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:34,567 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:34,568 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:34,571 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:34,571 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:44,573 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:44,573 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:44,576 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:44,576 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:54,564 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:54,564 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:28:54,568 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:28:54,568 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:04,559 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:04,559 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:04,563 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:04,563 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:14,562 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:14,562 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:14,565 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:14,566 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:24,569 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:24,570 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:24,573 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:24,573 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:24,605 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:24,605 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:24,609 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:24,609 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:34,573 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:34,573 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:34,577 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:34,577 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:44,568 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:44,568 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:44,572 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:44,572 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:54,572 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:54,572 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:29:54,576 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:29:54,576 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:04,562 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:04,562 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:04,566 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:04,566 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:14,563 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:14,563 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:14,567 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:14,567 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:24,567 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:24,567 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:24,570 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:24,570 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:24,614 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:24,614 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:24,620 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:24,620 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:34,565 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:34,565 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:34,568 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:34,568 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:44,573 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:44,573 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:44,576 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:44,578 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:54,405 basehttp 22820 25080 "POST / HTTP/1.1" 200 26408
+INFO 2025-06-02 18:30:54,423 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:54,423 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:30:54,439 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:30:54,439 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:04,424 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:04,424 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:04,427 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:04,427 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:14,427 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:14,427 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:14,430 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:14,430 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:24,437 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:24,438 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:24,442 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:24,442 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:24,604 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:24,605 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:24,609 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:24,609 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:34,426 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:34,426 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:34,429 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:34,429 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:44,425 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:44,425 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:44,429 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:44,429 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:54,437 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:54,437 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:31:54,440 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:31:54,440 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:04,610 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:04,610 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:04,614 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:04,614 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:14,428 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:14,428 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:14,432 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:14,432 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:24,424 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:24,424 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:24,428 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:24,428 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:24,606 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:24,610 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:24,610 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:24,613 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:34,432 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:34,432 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:34,435 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:34,436 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:44,438 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:44,438 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:44,444 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:44,444 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:54,429 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:54,429 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:32:54,432 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:32:54,432 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:04,435 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:04,435 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:04,438 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:04,438 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:14,425 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:14,426 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:14,429 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:14,429 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:24,433 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:24,433 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:24,436 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:24,436 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:24,617 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:24,618 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:24,621 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:24,621 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:34,423 basehttp 22820 25080 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:34,423 basehttp 22820 12968 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:34,427 basehttp 22820 25080 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:34,427 basehttp 22820 12968 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:44,427 basehttp 22820 12968 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:44,427 basehttp 22820 25080 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:44,431 basehttp 22820 12968 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:44,431 basehttp 22820 25080 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:54,430 basehttp 22820 5580 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:54,436 basehttp 22820 5580 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:33:54,436 basehttp 22820 5008 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:33:54,441 basehttp 22820 5008 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:04,425 basehttp 22820 5580 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:04,425 basehttp 22820 5008 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:04,429 basehttp 22820 5008 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:04,429 basehttp 22820 5580 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:14,434 basehttp 22820 5580 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:14,434 basehttp 22820 5008 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:14,437 basehttp 22820 5580 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:14,438 basehttp 22820 5008 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:24,423 basehttp 22820 5008 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:24,423 basehttp 22820 5580 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:24,427 basehttp 22820 5008 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:24,427 basehttp 22820 5580 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:34,430 basehttp 22820 5580 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:34,430 basehttp 22820 5008 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:34,434 basehttp 22820 5580 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:34,434 basehttp 22820 5008 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:44,433 basehttp 22820 5580 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:44,433 basehttp 22820 5008 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:44,436 basehttp 22820 5580 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:44,436 basehttp 22820 5008 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:47,228 basehttp 22820 5008 "POST / HTTP/1.1" 200 26408
+INFO 2025-06-02 18:34:47,248 basehttp 22820 5580 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:47,248 basehttp 22820 5008 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:47,261 basehttp 22820 5008 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:47,261 basehttp 22820 5580 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:58,938 autoreload 16840 21508 Watching for file changes with StatReloader
+INFO 2025-06-02 18:34:59,299 basehttp 16840 21464 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:59,300 basehttp 16840 1252 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:34:59,317 basehttp 16840 21464 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:34:59,317 basehttp 16840 1252 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:07,253 basehttp 16840 1252 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:07,253 basehttp 16840 21464 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:07,260 basehttp 16840 1252 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:07,261 basehttp 16840 21464 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:08,538 basehttp 16840 1252 "GET / HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:08,564 basehttp 16840 1252 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:08,564 basehttp 16840 21464 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:08,580 basehttp 16840 1252 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:08,580 basehttp 16840 21464 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:18,570 basehttp 16840 21464 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:18,570 basehttp 16840 1252 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:18,573 basehttp 16840 1252 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:18,575 basehttp 16840 21464 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:21,437 basehttp 16840 21464 "POST / HTTP/1.1" 200 26408
+INFO 2025-06-02 18:35:21,459 basehttp 16840 21464 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:21,459 basehttp 16840 1252 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:21,470 basehttp 16840 1252 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:21,473 basehttp 16840 21464 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:31,468 basehttp 16840 21464 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:31,468 basehttp 16840 1252 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:31,472 basehttp 16840 21464 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:31,472 basehttp 16840 1252 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:41,466 basehttp 16840 21464 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:41,466 basehttp 16840 1252 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:41,470 basehttp 16840 21464 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:41,470 basehttp 16840 1252 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:51,474 basehttp 16840 21464 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:51,474 basehttp 16840 1252 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:35:51,477 basehttp 16840 21464 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:35:51,477 basehttp 16840 1252 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:36:01,460 basehttp 16840 1252 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:36:01,460 basehttp 16840 21464 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:36:01,463 basehttp 16840 21464 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:36:01,464 basehttp 16840 1252 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:36:11,466 basehttp 16840 21464 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:36:11,466 basehttp 16840 1252 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:36:11,469 basehttp 16840 21464 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:36:11,469 basehttp 16840 1252 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:36:21,474 basehttp 16840 21464 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:36:21,474 basehttp 16840 1252 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:36:21,477 basehttp 16840 1252 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:36:21,477 basehttp 16840 21464 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:36:31,464 basehttp 16840 1252 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:36:31,464 basehttp 16840 21464 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:36:31,467 basehttp 16840 1252 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:36:31,467 basehttp 16840 21464 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:36:41,472 basehttp 16840 21464 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:36:41,472 basehttp 16840 1252 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:36:41,475 basehttp 16840 21464 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:36:41,475 basehttp 16840 1252 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:36:51,460 basehttp 16840 1252 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:36:51,460 basehttp 16840 21464 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:36:51,463 basehttp 16840 21464 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:36:51,464 basehttp 16840 1252 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:37:01,468 basehttp 16840 1252 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:37:01,468 basehttp 16840 21464 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:37:01,472 basehttp 16840 1252 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:37:01,472 basehttp 16840 21464 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:37:11,467 basehttp 16840 21464 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:37:11,467 basehttp 16840 1252 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:37:11,470 basehttp 16840 21464 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:37:11,471 basehttp 16840 1252 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:37:21,464 basehttp 16840 1252 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:37:21,464 basehttp 16840 21464 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:37:21,467 basehttp 16840 1252 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:37:21,467 basehttp 16840 21464 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:37:31,464 basehttp 16840 21464 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:37:31,464 basehttp 16840 1252 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:37:31,467 basehttp 16840 21464 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:37:31,467 basehttp 16840 1252 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:37:41,466 basehttp 16840 1252 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:37:41,466 basehttp 16840 21464 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:37:41,470 basehttp 16840 21464 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:37:41,470 basehttp 16840 1252 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:37:51,469 basehttp 16840 21464 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:37:51,469 basehttp 16840 1252 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:37:51,473 basehttp 16840 21464 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:37:51,473 basehttp 16840 1252 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:38:01,469 basehttp 16840 2416 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:38:01,472 basehttp 16840 24552 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:38:01,472 basehttp 16840 2416 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:38:01,477 basehttp 16840 2416 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:38:11,460 basehttp 16840 15532 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:38:11,463 basehttp 16840 21848 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:38:11,463 basehttp 16840 15532 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:38:11,465 basehttp 16840 21848 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:40:26,436 autoreload 2360 15824 Watching for file changes with StatReloader
+INFO 2025-06-02 18:40:31,491 basehttp 2360 23756 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:40:31,492 basehttp 2360 15408 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:40:31,507 basehttp 2360 15408 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:40:31,508 basehttp 2360 23756 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:40:33,644 basehttp 2360 23756 "GET / HTTP/1.1" 200 26257
+INFO 2025-06-02 18:40:33,666 basehttp 2360 23756 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:40:33,666 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:40:33,672 basehttp 2360 23756 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:40:33,673 basehttp 2360 15408 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 26257
+INFO 2025-06-02 18:40:41,032 basehttp 2360 15408 "POST / HTTP/1.1" 302 0
+INFO 2025-06-02 18:40:41,138 basehttp 2360 15408 "GET /dashboard/ HTTP/1.1" 200 33017
+INFO 2025-06-02 18:40:41,245 basehttp 2360 23756 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:40:41,245 basehttp 2360 15408 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:40:41,254 basehttp 2360 15408 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:40:49,764 basehttp 2360 15408 "GET /security/ HTTP/1.1" 200 34789
+INFO 2025-06-02 18:40:49,809 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:40:53,643 basehttp 2360 15408 "GET /alerts/ HTTP/1.1" 200 27978
+INFO 2025-06-02 18:40:53,666 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:40:56,960 basehttp 2360 15408 "GET /reports/ HTTP/1.1" 200 35855
+INFO 2025-06-02 18:40:57,010 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:41:00,319 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:41:05,133 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:41:06,995 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:41:16,984 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:41:17,777 basehttp 2360 15408 "POST /reports/ HTTP/1.1" 302 0
+INFO 2025-06-02 18:41:17,792 basehttp 2360 15408 "GET /reports/ HTTP/1.1" 200 37358
+INFO 2025-06-02 18:41:17,852 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:41:21,451 basehttp 2360 15408 "GET /export-report/1/ HTTP/1.1" 200 1961
+INFO 2025-06-02 18:41:24,921 basehttp 2360 15408 "GET /users/ HTTP/1.1" 200 46683
+INFO 2025-06-02 18:41:24,982 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:41:34,954 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:41:44,958 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:41:55,615 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:42:05,617 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:42:08,910 basehttp 2360 23756 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:42:08,923 basehttp 2360 15408 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:42:14,945 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:42:19,613 basehttp 2360 15408 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:42:19,613 basehttp 2360 23756 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:42:24,951 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:42:29,630 basehttp 2360 23756 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:42:29,630 basehttp 2360 15408 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:42:34,959 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:42:39,625 basehttp 2360 23756 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:42:39,626 basehttp 2360 15408 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:42:44,949 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:42:49,614 basehttp 2360 15408 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:42:49,614 basehttp 2360 23756 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:42:54,956 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:42:59,620 basehttp 2360 15408 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:42:59,632 basehttp 2360 23756 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:43:04,946 basehttp 2360 23756 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:43:09,611 basehttp 2360 15408 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:43:09,613 basehttp 2360 23756 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:43:14,952 basehttp 2360 23756 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:43:24,618 basehttp 2360 24596 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:43:24,618 basehttp 2360 20700 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:43:24,960 basehttp 2360 20700 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:43:31,031 basehttp 2360 20700 "GET /dashboard/ HTTP/1.1" 200 33017
+INFO 2025-06-02 18:43:31,083 basehttp 2360 20700 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:43:31,095 basehttp 2360 20700 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:43:31,103 basehttp 2360 24596 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:43:39,129 basehttp 2360 24596 "GET /security/ HTTP/1.1" 200 34789
+INFO 2025-06-02 18:43:39,154 basehttp 2360 24596 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+ERROR 2025-06-02 18:43:44,760 log 2360 24596 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\views.py", line 386, in events_view
+    return render(request, 'siem_app/events.html', context)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 523, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 586, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 240: 'block'. Looking for one of: endblock.
+ERROR 2025-06-02 18:43:44,771 basehttp 2360 24596 "GET /events/ HTTP/1.1" 500 201149
+INFO 2025-06-02 18:43:51,840 basehttp 2360 19464 "GET /network/ HTTP/1.1" 200 42355
+INFO 2025-06-02 18:43:51,958 basehttp 2360 19464 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:43:57,510 basehttp 2360 19464 "GET /infrastructure/ HTTP/1.1" 200 32985
+INFO 2025-06-02 18:43:57,568 basehttp 2360 19464 "GET /api/server-metrics/ HTTP/1.1" 200 15
+INFO 2025-06-02 18:43:57,575 basehttp 2360 21240 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:44:07,550 basehttp 2360 21240 "GET /api/server-metrics/ HTTP/1.1" 200 15
+INFO 2025-06-02 18:44:07,553 basehttp 2360 19464 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:44:08,915 basehttp 2360 19464 "GET /manual-entry/ HTTP/1.1" 200 31856
+INFO 2025-06-02 18:44:08,935 basehttp 2360 19464 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:44:18,939 basehttp 2360 19464 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:44:24,622 basehttp 2360 21240 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:44:24,623 basehttp 2360 19464 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:44:28,946 basehttp 2360 19464 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:44:38,936 basehttp 2360 19464 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:44:48,941 basehttp 2360 19464 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:44:58,946 basehttp 2360 19464 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:45:08,937 basehttp 2360 19464 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:45:18,942 basehttp 2360 19464 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:45:24,611 basehttp 2360 19464 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:45:24,623 basehttp 2360 21240 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:45:26,011 basehttp 2360 21240 "POST /manual-entry/ HTTP/1.1" 302 0
+ERROR 2025-06-02 18:45:26,068 log 2360 21240 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\views.py", line 386, in events_view
+    return render(request, 'siem_app/events.html', context)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 523, in parse
+    self.unclosed_block_tag(parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 586, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 240: 'block'. Looking for one of: endblock.
+ERROR 2025-06-02 18:45:26,076 basehttp 2360 21240 "GET /events/ HTTP/1.1" 500 201654
+INFO 2025-06-02 18:46:04,008 basehttp 2360 10072 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:46:04,015 basehttp 2360 26064 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:47:33,835 autoreload 23220 9304 Watching for file changes with StatReloader
+INFO 2025-06-02 18:47:45,745 basehttp 23220 21584 "GET / HTTP/1.1" 302 0
+INFO 2025-06-02 18:47:45,818 basehttp 23220 21584 "GET /dashboard/ HTTP/1.1" 200 33848
+INFO 2025-06-02 18:47:46,013 basehttp 23220 21584 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:47:46,020 basehttp 23220 9532 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:47:46,025 basehttp 23220 21584 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:47:55,987 basehttp 23220 8884 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:47:55,987 basehttp 23220 25424 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:48:05,987 basehttp 23220 14204 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:48:05,987 basehttp 23220 10908 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:48:12,564 basehttp 23220 14204 "GET /alerts/ HTTP/1.1" 200 27978
+INFO 2025-06-02 18:48:12,592 basehttp 23220 14204 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:48:17,439 basehttp 23220 23312 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:48:22,600 basehttp 23220 23312 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:48:23,089 basehttp 23220 23312 "GET /reports/ HTTP/1.1" 200 36924
+INFO 2025-06-02 18:48:23,139 basehttp 23220 23312 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:48:24,416 basehttp 23220 2904 "GET /users/ HTTP/1.1" 200 46683
+INFO 2025-06-02 18:48:24,470 basehttp 23220 2904 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:48:34,455 basehttp 23220 21796 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:48:44,445 basehttp 23220 23256 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:48:45,628 basehttp 23220 23256 "GET /manual-entry/ HTTP/1.1" 200 31856
+INFO 2025-06-02 18:48:45,652 basehttp 23220 23256 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:48:55,655 basehttp 23220 23748 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:48:58,053 basehttp 23220 23748 "GET /logs/ HTTP/1.1" 200 38987
+INFO 2025-06-02 18:48:58,079 basehttp 23220 23748 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:49:08,088 basehttp 23220 2504 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:49:18,078 basehttp 23220 19076 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:49:26,607 basehttp 23220 22040 "GET /logs/ HTTP/1.1" 200 38987
+INFO 2025-06-02 18:49:26,632 basehttp 23220 22040 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:49:36,633 basehttp 23220 23956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:49:46,634 basehttp 23220 26048 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:49:49,069 basehttp 23220 26048 "GET /reports/ HTTP/1.1" 200 36924
+INFO 2025-06-02 18:49:49,120 basehttp 23220 26048 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:49:54,749 basehttp 23220 24840 "GET /dashboard/ HTTP/1.1" 200 33453
+INFO 2025-06-02 18:49:54,804 basehttp 23220 23308 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:49:54,804 basehttp 23220 24840 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:49:54,816 basehttp 23220 24840 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:50:04,786 basehttp 23220 14388 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:50:04,798 basehttp 23220 27068 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:50:14,776 basehttp 23220 25732 "GET /api/real-dashboard-data/ HTTP/1.1" 200 221
+INFO 2025-06-02 18:50:14,776 basehttp 23220 20964 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:50:23,814 basehttp 23220 20964 "GET /alerts/ HTTP/1.1" 200 27978
+INFO 2025-06-02 18:50:23,841 basehttp 23220 20964 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:50:33,539 basehttp 23220 25800 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:50:33,853 basehttp 23220 25800 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:50:43,844 basehttp 23220 2672 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:50:49,838 basehttp 23220 26016 "GET /users/ HTTP/1.1" 200 46683
+INFO 2025-06-02 18:50:49,888 basehttp 23220 26016 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:50:59,863 basehttp 23220 16632 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:51:09,868 basehttp 23220 9492 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:51:19,876 basehttp 23220 18000 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:51:29,865 basehttp 23220 23628 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:51:31,821 basehttp 23220 23628 "GET /infrastructure/ HTTP/1.1" 200 32985
+INFO 2025-06-02 18:51:31,900 basehttp 23220 23628 "GET /api/server-metrics/ HTTP/1.1" 200 15
+INFO 2025-06-02 18:51:31,904 basehttp 23220 12068 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:51:41,872 basehttp 23220 14432 "GET /api/server-metrics/ HTTP/1.1" 200 15
+INFO 2025-06-02 18:51:41,876 basehttp 23220 2232 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:51:51,865 basehttp 23220 27560 "GET /api/server-metrics/ HTTP/1.1" 200 15
+INFO 2025-06-02 18:51:51,868 basehttp 23220 26596 "GET /api/dashboard-metrics/ HTTP/1.1" 200 174
+INFO 2025-06-02 18:57:08,688 autoreload 26452 24172 Watching for file changes with StatReloader
+INFO 2025-06-02 18:57:10,525 basehttp 26452 17944 "GET /api/server-metrics/ HTTP/1.1" 200 1024
+INFO 2025-06-02 18:57:10,580 basehttp 26452 17944 "GET /api/server-metrics/ HTTP/1.1" 200 1024
+INFO 2025-06-02 18:57:10,592 basehttp 26452 15636 "GET /api/dashboard-metrics/ HTTP/1.1" 200 175
+INFO 2025-06-02 18:57:11,834 basehttp 26452 15636 "GET /infrastructure/ HTTP/1.1" 200 54432
+INFO 2025-06-02 18:57:12,005 basehttp 26452 15636 "GET /api/server-metrics/ HTTP/1.1" 200 1024
+INFO 2025-06-02 18:57:12,022 basehttp 26452 17944 "GET /api/dashboard-metrics/ HTTP/1.1" 200 175
+INFO 2025-06-02 18:57:21,923 basehttp 26452 26968 "GET /api/dashboard-metrics/ HTTP/1.1" 200 175
+INFO 2025-06-02 18:57:21,955 basehttp 26452 11752 "GET /api/server-metrics/ HTTP/1.1" 200 1024
+ERROR 2025-06-02 18:57:28,283 log 26452 11752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\views.py", line 386, in events_view
+    return render(request, 'siem_app/events.html', context)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 573, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 240: 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-06-02 18:57:28,293 basehttp 26452 11752 "GET /events/ HTTP/1.1" 500 194482
+INFO 2025-06-02 18:57:31,968 basehttp 26452 16088 "GET /api/server-metrics/ HTTP/1.1" 200 1024
+INFO 2025-06-02 18:57:31,974 basehttp 26452 26432 "GET /api/dashboard-metrics/ HTTP/1.1" 200 175
+ERROR 2025-06-02 18:57:32,541 log 26452 26432 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\views.py", line 386, in events_view
+    return render(request, 'siem_app/events.html', context)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 573, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 240: 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-06-02 18:57:32,549 basehttp 26452 26432 "GET /events/ HTTP/1.1" 500 194482
+INFO 2025-06-02 18:59:49,840 basehttp 26452 11956 "GET /events/ HTTP/1.1" 200 99845
+INFO 2025-06-02 18:59:49,921 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 175
+INFO 2025-06-02 18:59:55,292 basehttp 26452 11956 "GET /alerts/ HTTP/1.1" 200 43127
+INFO 2025-06-02 18:59:55,316 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 175
+INFO 2025-06-02 19:00:05,324 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:00:15,314 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:00:23,160 basehttp 26452 11956 "GET /dashboard/ HTTP/1.1" 200 42631
+INFO 2025-06-02 19:00:23,238 basehttp 26452 27028 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:00:23,241 basehttp 26452 11956 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:00:23,254 basehttp 26452 11956 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:00:33,203 basehttp 26452 27028 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:00:33,203 basehttp 26452 11956 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:00:35,984 basehttp 26452 11956 "GET /events/ HTTP/1.1" 200 99845
+INFO 2025-06-02 19:00:36,010 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:00:40,547 basehttp 26452 11956 "GET /manual-entry/ HTTP/1.1" 200 31949
+INFO 2025-06-02 19:00:40,576 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:00:50,580 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:00:51,097 basehttp 26452 11956 "GET /users/ HTTP/1.1" 200 52189
+INFO 2025-06-02 19:00:51,151 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:00:53,924 basehttp 26452 11956 "GET /manual-entry/ HTTP/1.1" 200 31949
+INFO 2025-06-02 19:00:53,950 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:01:03,950 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:01:04,522 basehttp 26452 11956 "GET /events/ HTTP/1.1" 200 99845
+INFO 2025-06-02 19:01:04,551 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:01:08,130 basehttp 26452 11956 "GET /security/ HTTP/1.1" 200 41911
+INFO 2025-06-02 19:01:08,153 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:01:10,336 basehttp 26452 11956 "GET /reports/ HTTP/1.1" 200 37015
+INFO 2025-06-02 19:01:10,385 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:01:20,367 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:01:26,698 basehttp 26452 11956 "GET /alerts/ HTTP/1.1" 200 43127
+INFO 2025-06-02 19:01:26,725 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:01:33,049 basehttp 26452 11956 "GET /dashboard/ HTTP/1.1" 200 42631
+INFO 2025-06-02 19:01:33,104 basehttp 26452 11956 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:01:33,119 basehttp 26452 11956 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:01:33,123 basehttp 26452 27028 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:01:43,086 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:01:43,086 basehttp 26452 27028 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:01:50,504 basehttp 26452 11956 "GET /security/ HTTP/1.1" 200 41911
+INFO 2025-06-02 19:01:50,533 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:02:00,543 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:02:10,535 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:02:20,541 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:02:30,532 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:02:31,319 basehttp 26452 11956 "GET /alerts/ HTTP/1.1" 200 43127
+INFO 2025-06-02 19:02:31,345 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:02:41,342 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:02:50,882 basehttp 26452 11956 "GET /reports/ HTTP/1.1" 200 37015
+INFO 2025-06-02 19:02:50,940 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:03:00,918 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:03:08,320 basehttp 26452 11956 "GET /export-report/1/ HTTP/1.1" 200 1961
+INFO 2025-06-02 19:03:10,908 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:03:20,916 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:03:25,657 basehttp 26452 11956 "GET /dashboard/ HTTP/1.1" 200 42631
+INFO 2025-06-02 19:03:25,717 basehttp 26452 11956 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:03:25,731 basehttp 26452 27028 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:03:25,735 basehttp 26452 11956 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:03:27,842 basehttp 26452 11956 "GET /security/ HTTP/1.1" 200 41911
+INFO 2025-06-02 19:03:27,876 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:03:38,614 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:03:48,675 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:03:58,612 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:04:08,612 basehttp 26452 11956 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:04:18,624 basehttp 26452 4848 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:04:28,617 basehttp 26452 22836 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:04:38,624 basehttp 26452 7472 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:05:24,613 basehttp 26452 27100 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:06:24,617 basehttp 26452 24592 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:08:24,651 autoreload 26452 24172 C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\urls.py changed, reloading.
+INFO 2025-06-02 19:08:25,721 autoreload 13472 13960 Watching for file changes with StatReloader
+INFO 2025-06-02 19:08:50,140 basehttp 13472 14620 "GET /users/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:08:50,156 basehttp 13472 14620 "GET /login/?next=/users/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:08:54,967 basehttp 13472 14620 "GET /security/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:08:54,973 basehttp 13472 14620 "GET /login/?next=/security/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:08:55,954 basehttp 13472 14620 "GET /alerts/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:08:55,958 basehttp 13472 14620 "GET /login/?next=/alerts/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:09:07,569 autoreload 2776 8808 Watching for file changes with StatReloader
+INFO 2025-06-02 19:09:12,793 basehttp 2776 12016 "GET / HTTP/1.1" 302 0
+INFO 2025-06-02 19:09:12,856 basehttp 2776 12016 "GET /dashboard/ HTTP/1.1" 200 33586
+INFO 2025-06-02 19:09:13,099 basehttp 2776 12016 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:09:18,247 basehttp 2776 19812 "GET /events/ HTTP/1.1" 200 90803
+INFO 2025-06-02 19:09:20,170 basehttp 2776 19812 "GET /alerts/ HTTP/1.1" 200 34084
+INFO 2025-06-02 19:09:21,618 basehttp 2776 19812 "GET /iess-services/ HTTP/1.1" 200 34642
+INFO 2025-06-02 19:09:31,838 basehttp 2776 13804 "GET /reports/ HTTP/1.1" 200 27972
+INFO 2025-06-02 19:09:35,956 basehttp 2776 13804 "GET /iess-services/ HTTP/1.1" 200 34642
+INFO 2025-06-02 19:10:10,652 basehttp 2776 5440 "GET /network/ HTTP/1.1" 200 33398
+INFO 2025-06-02 19:11:55,331 basehttp 2776 26192 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:11:57,750 basehttp 2776 14856 "GET /security/ HTTP/1.1" 200 32870
+INFO 2025-06-02 19:12:06,958 basehttp 2776 6496 "GET /logs/ HTTP/1.1" 200 62142
+INFO 2025-06-02 19:12:36,032 basehttp 2776 25708 "GET / HTTP/1.1" 200 9662
+INFO 2025-06-02 19:12:37,643 basehttp 2776 17992 "GET /logs/ HTTP/1.1" 200 62142
+INFO 2025-06-02 19:12:38,898 basehttp 2776 25708 "GET / HTTP/1.1" 200 9662
+INFO 2025-06-02 19:12:42,178 basehttp 2776 25708 "GET / HTTP/1.1" 200 9662
+INFO 2025-06-02 19:12:46,194 basehttp 2776 25708 "GET /dashboard/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:12:46,201 basehttp 2776 25708 "GET /login/?next=/dashboard/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:12:47,825 basehttp 2776 25708 "GET /login/?next=/dashboard/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:12:58,424 basehttp 2776 12400 "GET / HTTP/1.1" 302 0
+INFO 2025-06-02 19:12:58,458 basehttp 2776 12400 "GET /dashboard/ HTTP/1.1" 200 33586
+INFO 2025-06-02 19:12:58,621 basehttp 2776 12400 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:13:08,633 basehttp 2776 20508 "GET /logs/ HTTP/1.1" 200 62142
+INFO 2025-06-02 19:13:09,282 basehttp 2776 24036 "GET / HTTP/1.1" 200 9662
+WARNING 2025-06-02 19:13:09,749 log 2776 24036 Not Found: /favicon.ico
+WARNING 2025-06-02 19:13:09,750 basehttp 2776 24036 "GET /favicon.ico HTTP/1.1" 404 8711
+INFO 2025-06-02 19:13:28,535 basehttp 2776 10324 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:13:29,610 basehttp 2776 10324 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:13:35,115 basehttp 2776 18556 "GET / HTTP/1.1" 302 0
+INFO 2025-06-02 19:13:35,148 basehttp 2776 18556 "GET /dashboard/ HTTP/1.1" 200 33586
+INFO 2025-06-02 19:13:35,317 basehttp 2776 18556 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:13:39,631 basehttp 2776 18556 "GET /logs/ HTTP/1.1" 200 62142
+INFO 2025-06-02 19:13:45,326 basehttp 2776 24380 "GET / HTTP/1.1" 302 0
+INFO 2025-06-02 19:13:45,378 basehttp 2776 24380 "GET /dashboard/ HTTP/1.1" 200 33586
+INFO 2025-06-02 19:13:45,537 basehttp 2776 24380 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:13:50,193 basehttp 2776 24380 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:13:50,197 basehttp 2776 24380 "GET /login/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:13:58,607 basehttp 2776 1864 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:13:58,610 basehttp 2776 1864 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:13:58,612 basehttp 2776 24768 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:13:58,616 basehttp 2776 24768 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:13:59,732 basehttp 2776 24768 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:13:59,736 basehttp 2776 24768 "GET /login/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:14:05,226 basehttp 2776 20988 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:14:05,228 basehttp 2776 20988 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:14:05,310 basehttp 2776 20988 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:14:05,312 basehttp 2776 20988 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:14:10,621 basehttp 2776 20988 "GET /logs/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:14:10,629 basehttp 2776 20988 "GET /login/?next=/logs/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:14:28,606 basehttp 2776 13900 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:14:28,608 basehttp 2776 13900 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:14:29,605 basehttp 2776 13900 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:14:29,608 basehttp 2776 13900 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:14:35,612 basehttp 2776 13900 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:14:35,615 basehttp 2776 19804 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:14:35,615 basehttp 2776 13900 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:14:35,617 basehttp 2776 13900 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:14:58,609 basehttp 2776 19804 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:14:58,609 basehttp 2776 13900 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:14:58,612 basehttp 2776 19804 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:14:58,612 basehttp 2776 13900 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:15:05,616 basehttp 2776 25268 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:15:05,618 basehttp 2776 27472 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:15:05,618 basehttp 2776 25268 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:15:05,621 basehttp 2776 25268 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:15:28,607 basehttp 2776 11480 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:15:28,611 basehttp 2776 11480 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:15:28,612 basehttp 2776 16296 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:15:28,615 basehttp 2776 16296 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:15:35,604 basehttp 2776 15684 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:15:35,606 basehttp 2776 16404 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:15:35,613 basehttp 2776 15684 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:15:35,613 basehttp 2776 16404 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:15:58,611 basehttp 2776 19436 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:15:58,613 basehttp 2776 16192 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:15:58,615 basehttp 2776 19436 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:15:58,615 basehttp 2776 16192 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:16:04,320 basehttp 2776 21764 "GET /alerts/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:16:04,330 basehttp 2776 21764 "GET /login/?next=/alerts/ HTTP/1.1" 200 9662
+INFO 2025-06-02 19:17:29,848 autoreload 2776 8808 C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\urls.py changed, reloading.
+INFO 2025-06-02 19:17:30,954 autoreload 12764 17988 Watching for file changes with StatReloader
+INFO 2025-06-02 19:18:01,003 autoreload 24356 10784 Watching for file changes with StatReloader
+INFO 2025-06-02 19:19:20,023 autoreload 23928 808 Watching for file changes with StatReloader
+INFO 2025-06-02 19:22:11,438 autoreload 20188 20084 Watching for file changes with StatReloader
+INFO 2025-06-02 19:22:17,697 basehttp 20188 11120 "GET / HTTP/1.1" 200 10868
+INFO 2025-06-02 19:22:26,521 basehttp 20188 11120 "POST / HTTP/1.1" 200 11111
+INFO 2025-06-02 19:22:33,315 basehttp 20188 11120 "POST / HTTP/1.1" 200 11111
+INFO 2025-06-02 19:22:51,682 basehttp 20188 11120 "POST / HTTP/1.1" 302 0
+INFO 2025-06-02 19:22:51,737 basehttp 20188 11120 "GET /dashboard/ HTTP/1.1" 200 33581
+INFO 2025-06-02 19:22:51,833 basehttp 20188 11120 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:22:54,310 basehttp 20188 11120 "GET /logs/ HTTP/1.1" 200 62742
+INFO 2025-06-02 19:23:24,630 basehttp 20188 24408 "GET /logs/ HTTP/1.1" 200 62742
+INFO 2025-06-02 19:23:55,628 basehttp 20188 14208 "GET /logs/ HTTP/1.1" 200 62742
+INFO 2025-06-02 19:24:26,632 basehttp 20188 10380 "GET /logs/ HTTP/1.1" 200 62742
+INFO 2025-06-02 19:24:57,640 basehttp 20188 15684 "GET /logs/ HTTP/1.1" 200 62742
+INFO 2025-06-02 19:25:28,639 basehttp 20188 10704 "GET /logs/ HTTP/1.1" 200 62742
+INFO 2025-06-02 19:26:08,327 basehttp 20188 17972 "GET /login/?next=/alerts/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:26:08,363 basehttp 20188 17972 "GET /dashboard/ HTTP/1.1" 200 33581
+INFO 2025-06-02 19:26:08,449 basehttp 20188 17972 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:26:21,197 basehttp 20188 10080 "GET /logs/ HTTP/1.1" 200 62742
+INFO 2025-06-02 19:26:38,628 basehttp 20188 25128 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:26:38,629 basehttp 20188 8432 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:26:51,262 basehttp 20188 17944 "GET /logs/ HTTP/1.1" 200 62742
+INFO 2025-06-02 19:27:08,614 basehttp 20188 17944 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:27:08,617 basehttp 20188 20836 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:27:20,349 basehttp 20188 20836 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:27:20,360 basehttp 20188 17944 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:27:21,446 basehttp 20188 17944 "GET /dashboard/ HTTP/1.1" 200 43995
+INFO 2025-06-02 19:27:21,569 basehttp 20188 17944 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:27:21,647 basehttp 20188 17944 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:27:21,664 basehttp 20188 20836 "GET /logs/ HTTP/1.1" 200 73144
+INFO 2025-06-02 19:27:21,667 basehttp 20188 12128 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:27:21,703 basehttp 20188 12128 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:27:36,551 basehttp 20188 20836 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:27:36,553 basehttp 20188 12128 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:27:37,643 basehttp 20188 12128 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:27:38,615 basehttp 20188 12128 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:27:38,618 basehttp 20188 20836 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:27:51,613 basehttp 20188 20836 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:27:51,623 basehttp 20188 20836 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:27:51,628 basehttp 20188 12128 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:27:52,619 basehttp 20188 12128 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:27:52,686 basehttp 20188 12128 "GET /logs/ HTTP/1.1" 200 73144
+INFO 2025-06-02 19:27:52,745 basehttp 20188 12128 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:28:06,622 basehttp 20188 20836 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:28:06,623 basehttp 20188 12128 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:28:08,631 basehttp 20188 20836 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:28:08,633 basehttp 20188 12128 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:28:08,671 basehttp 20188 12128 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:28:21,625 basehttp 20188 5768 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:28:21,627 basehttp 20188 23100 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:28:21,635 basehttp 20188 23100 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:28:23,618 basehttp 20188 23100 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:28:23,649 basehttp 20188 5768 "GET /logs/ HTTP/1.1" 200 73144
+INFO 2025-06-02 19:28:23,681 basehttp 20188 5768 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:28:36,628 basehttp 20188 20332 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:28:36,629 basehttp 20188 8236 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:28:38,406 basehttp 20188 27144 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:28:38,455 basehttp 20188 27144 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:28:38,582 basehttp 20188 27144 "GET /dashboard/ HTTP/1.1" 200 43995
+INFO 2025-06-02 19:28:38,749 basehttp 20188 27144 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:28:38,764 basehttp 20188 18228 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:28:38,771 basehttp 20188 27144 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 19:28:39,620 basehttp 20188 27144 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:28:40,728 basehttp 20188 27144 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:28:40,734 basehttp 20188 27144 "GET /login/ HTTP/1.1" 200 10868
+INFO 2025-06-02 19:28:51,621 basehttp 20188 27144 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:28:51,624 basehttp 20188 18228 "GET /api/real-dashboard-data/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:28:51,625 basehttp 20188 27144 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:28:51,628 basehttp 20188 18228 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 10868
+INFO 2025-06-02 19:28:51,628 basehttp 20188 27144 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 10868
+INFO 2025-06-02 19:28:51,631 basehttp 20188 18228 "GET /login/?next=/api/real-dashboard-data/ HTTP/1.1" 200 10868
+INFO 2025-06-02 19:28:54,643 basehttp 20188 9492 "GET /api/dashboard-metrics/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:28:54,648 basehttp 20188 9492 "GET /login/?next=/api/dashboard-metrics/ HTTP/1.1" 200 10868
+INFO 2025-06-02 19:28:54,649 basehttp 20188 3416 "GET /logs/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:28:54,663 basehttp 20188 3416 "GET /login/?next=/logs/ HTTP/1.1" 200 10868
+INFO 2025-06-02 19:29:06,133 basehttp 20188 3416 "GET /alerts/ HTTP/1.1" 302 0
+INFO 2025-06-02 19:29:06,142 basehttp 20188 3416 "GET /login/?next=/alerts/ HTTP/1.1" 200 10868
+INFO 2025-06-02 19:31:40,504 basehttp 20188 22928 "POST /login/ HTTP/1.1" 302 0
+ERROR 2025-06-02 19:31:40,623 log 20188 22928 Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\views.py", line 141, in dashboard_view
+    return render(request, 'siem_app/dashboard.html', context)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 228, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'title' appears more than once
+ERROR 2025-06-02 19:31:40,637 basehttp 20188 22928 "GET /dashboard/ HTTP/1.1" 500 247085
+ERROR 2025-06-02 19:34:16,117 log 20188 24492 Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\views.py", line 141, in dashboard_view
+    return render(request, 'siem_app/dashboard.html', context)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        template_name,
+        ^^^^^^^^^^^^^^
+        skip=history,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader_tags.py", line 228, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'title' appears more than once
+ERROR 2025-06-02 19:34:16,126 basehttp 20188 24492 "GET /dashboard/ HTTP/1.1" 500 246780
+INFO 2025-06-02 19:35:00,931 basehttp 20188 24492 "GET /network/ HTTP/1.1" 200 43812
+INFO 2025-06-02 19:35:01,159 basehttp 20188 24492 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:35:16,116 basehttp 20188 24492 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:35:31,611 basehttp 20188 24492 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 19:35:42,000 basehttp 20188 24492 "GET /network/ HTTP/1.1" 200 33393
+INFO 2025-06-02 19:35:48,854 basehttp 20188 24492 "GET /iess-services/ HTTP/1.1" 200 34637
+INFO 2025-06-02 19:35:52,726 basehttp 20188 24492 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:36:23,620 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:36:54,625 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:37:25,628 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:37:56,622 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:38:27,635 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:38:58,625 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:39:29,622 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:40:00,623 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:40:31,625 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:41:02,627 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:41:33,621 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:42:04,633 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:42:35,623 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:43:06,627 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:43:37,628 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:44:08,634 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:44:39,642 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:45:10,629 basehttp 20188 6872 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:45:41,631 basehttp 20188 10584 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:46:12,621 basehttp 20188 24924 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:46:43,636 basehttp 20188 11360 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:47:14,630 basehttp 20188 23496 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:47:45,620 basehttp 20188 23496 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:48:16,619 basehttp 20188 23496 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:48:47,624 basehttp 20188 23496 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:49:18,625 basehttp 20188 23496 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:49:49,629 basehttp 20188 23496 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:50:20,637 basehttp 20188 23496 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:50:51,640 basehttp 20188 23496 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:51:22,623 basehttp 20188 23496 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:51:53,623 basehttp 20188 23496 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:52:24,627 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:52:55,630 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:53:26,632 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:53:57,636 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:54:28,620 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:54:59,626 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:55:30,626 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:56:01,629 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:56:32,633 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:57:03,635 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:57:34,631 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:58:05,623 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:58:36,628 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:59:07,622 basehttp 20188 27512 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 19:59:38,634 basehttp 20188 6140 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:00:09,620 basehttp 20188 6140 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:00:40,622 basehttp 20188 6140 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:01:11,624 basehttp 20188 6140 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:01:42,632 basehttp 20188 6140 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:02:13,627 basehttp 20188 6140 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:02:44,630 basehttp 20188 6140 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:03:15,632 basehttp 20188 6140 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:03:46,626 basehttp 20188 23376 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:04:17,625 basehttp 20188 23376 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:04:50,398 autoreload 14956 26500 Watching for file changes with StatReloader
+INFO 2025-06-02 20:04:50,716 basehttp 14956 14684 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:05:06,707 basehttp 14956 9248 "GET / HTTP/1.1" 200 10868
+WARNING 2025-06-02 20:05:07,547 log 14956 9248 Not Found: /favicon.ico
+WARNING 2025-06-02 20:05:07,547 basehttp 14956 9248 "GET /favicon.ico HTTP/1.1" 404 8999
+INFO 2025-06-02 20:05:21,628 basehttp 14956 14684 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:05:37,638 basehttp 14956 9248 "POST / HTTP/1.1" 302 0
+INFO 2025-06-02 20:05:37,669 basehttp 14956 9248 "GET /dashboard/ HTTP/1.1" 200 33581
+INFO 2025-06-02 20:05:37,980 basehttp 14956 9248 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:05:50,177 basehttp 14956 9248 "GET /configuration/ HTTP/1.1" 200 45625
+INFO 2025-06-02 20:05:52,624 basehttp 14956 14684 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:06:23,628 basehttp 14956 14684 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:06:54,632 basehttp 14956 14684 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:07:25,673 basehttp 14956 17816 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:07:56,637 basehttp 14956 6340 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:08:27,625 basehttp 14956 26972 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:08:58,632 basehttp 14956 22092 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:09:29,636 basehttp 14956 22092 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:09:41,295 basehttp 14956 9248 "GET /users/ HTTP/1.1" 200 43136
+INFO 2025-06-02 20:10:00,638 basehttp 14956 9248 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-06-02 20:10:00,641 basehttp 14956 9248 "GET /login/ HTTP/1.1" 200 10868
+INFO 2025-06-02 20:10:00,647 basehttp 14956 22092 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:10:07,417 basehttp 14956 9248 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-06-02 20:10:07,440 basehttp 14956 9248 "GET /dashboard/ HTTP/1.1" 200 33576
+INFO 2025-06-02 20:10:07,505 basehttp 14956 9248 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:10:12,168 basehttp 14956 9248 "GET /configuration/ HTTP/1.1" 200 45620
+INFO 2025-06-02 20:10:31,621 basehttp 14956 22092 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:10:35,585 basehttp 14956 9248 "GET /configuration/ HTTP/1.1" 200 45620
+INFO 2025-06-02 20:10:40,723 basehttp 14956 9248 "GET /dashboard/ HTTP/1.1" 200 33576
+INFO 2025-06-02 20:10:40,779 basehttp 14956 9248 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:11:00,754 basehttp 14956 9248 "GET /iess-services/ HTTP/1.1" 200 34632
+INFO 2025-06-02 20:11:02,079 basehttp 14956 9248 "GET /alerts/ HTTP/1.1" 200 34074
+INFO 2025-06-02 20:11:02,627 basehttp 14956 22092 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:11:32,628 basehttp 14956 9248 "GET /alerts/ HTTP/1.1" 200 34074
+INFO 2025-06-02 20:11:33,627 basehttp 14956 20812 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:12:03,626 basehttp 14956 9248 "GET /alerts/ HTTP/1.1" 200 34074
+INFO 2025-06-02 20:12:04,622 basehttp 14956 8052 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:12:34,637 basehttp 14956 9248 "GET /alerts/ HTTP/1.1" 200 34074
+INFO 2025-06-02 20:12:35,633 basehttp 14956 14196 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:13:05,626 basehttp 14956 9248 "GET /alerts/ HTTP/1.1" 200 34074
+INFO 2025-06-02 20:13:06,623 basehttp 14956 11768 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:13:23,341 basehttp 14956 26052 "GET /iess-services/ HTTP/1.1" 200 34632
+INFO 2025-06-02 20:13:24,970 basehttp 14956 26052 "GET /infrastructure/ HTTP/1.1" 200 45376
+INFO 2025-06-02 20:13:27,689 basehttp 14956 26052 "GET /dashboard/ HTTP/1.1" 200 33576
+INFO 2025-06-02 20:13:27,744 basehttp 14956 26052 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:13:37,625 basehttp 14956 2836 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:13:58,629 basehttp 14956 26052 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:13:58,636 basehttp 14956 24672 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:14:08,630 basehttp 14956 15316 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:14:28,627 basehttp 14956 24672 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:14:28,627 basehttp 14956 26052 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:14:39,625 basehttp 14956 25972 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:14:58,620 basehttp 14956 26052 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:14:58,624 basehttp 14956 24672 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:15:10,634 basehttp 14956 27228 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:15:27,717 basehttp 14956 24672 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:15:27,773 basehttp 14956 24672 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:15:41,625 basehttp 14956 13892 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:15:58,619 basehttp 14956 24672 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:15:58,620 basehttp 14956 26052 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:16:12,636 basehttp 14956 27452 "GET /alerts/ HTTP/1.1" 200 34079
+INFO 2025-06-02 20:16:27,726 basehttp 14956 26052 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:16:27,744 basehttp 14956 26052 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:16:58,616 basehttp 14956 26052 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:16:58,618 basehttp 14956 24672 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:17:28,624 basehttp 14956 24672 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:17:28,627 basehttp 14956 26052 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:18:24,618 basehttp 14956 26052 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:18:24,620 basehttp 14956 24672 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:19:24,624 basehttp 14956 24672 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:19:24,629 basehttp 14956 26052 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:20:24,627 basehttp 14956 26052 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:20:24,630 basehttp 14956 24672 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:21:24,624 basehttp 14956 24672 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:21:24,627 basehttp 14956 26052 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:22:24,627 basehttp 14956 26052 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:22:24,631 basehttp 14956 24672 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:23:24,629 basehttp 14956 24672 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:23:24,637 basehttp 14956 26052 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:24:24,619 basehttp 14956 26052 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:24:24,627 basehttp 14956 24672 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:25:24,626 basehttp 14956 24672 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:25:24,628 basehttp 14956 26052 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:26:24,627 basehttp 14956 26052 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:26:24,631 basehttp 14956 24672 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:27:24,619 basehttp 14956 24672 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:27:24,623 basehttp 14956 26052 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:28:24,618 basehttp 14956 24672 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:28:24,631 basehttp 14956 26052 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:29:24,634 basehttp 14956 26052 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:29:24,637 basehttp 14956 24672 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:30:24,649 basehttp 14956 24672 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:30:24,651 basehttp 14956 26052 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:33:25,714 autoreload 24652 10420 Watching for file changes with StatReloader
+INFO 2025-06-02 20:33:26,190 basehttp 24652 25800 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:33:26,203 basehttp 24652 20524 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:33:33,487 basehttp 24652 21140 "GET / HTTP/1.1" 200 10868
+INFO 2025-06-02 20:33:45,149 basehttp 24652 21140 "POST / HTTP/1.1" 200 11111
+INFO 2025-06-02 20:34:09,173 basehttp 24652 21140 "POST / HTTP/1.1" 302 0
+INFO 2025-06-02 20:34:09,214 basehttp 24652 21140 "GET /dashboard/ HTTP/1.1" 200 33578
+INFO 2025-06-02 20:34:09,326 basehttp 24652 21140 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:34:24,628 basehttp 24652 20524 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:34:24,630 basehttp 24652 25800 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:34:39,616 basehttp 24652 21140 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:34:39,617 basehttp 24652 9684 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:35:09,625 basehttp 24652 9684 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:35:09,627 basehttp 24652 21140 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:35:24,612 basehttp 24652 25800 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:35:24,620 basehttp 24652 20524 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:38:39,795 autoreload 25904 16380 Watching for file changes with StatReloader
+INFO 2025-06-02 20:38:41,910 basehttp 25904 10988 "GET /dashboard/ HTTP/1.1" 200 33578
+INFO 2025-06-02 20:38:42,058 basehttp 25904 10988 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:38:50,842 basehttp 25904 10988 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-06-02 20:38:50,847 basehttp 25904 10988 "GET /login/ HTTP/1.1" 200 10864
+INFO 2025-06-02 20:39:24,624 basehttp 25904 4648 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:39:24,628 basehttp 25904 14936 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:40:00,875 basehttp 25904 10988 "GET /login/ HTTP/1.1" 200 9659
+INFO 2025-06-02 20:40:24,629 basehttp 25904 14936 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:40:24,634 basehttp 25904 4648 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:40:54,272 basehttp 25904 10988 "GET /login/ HTTP/1.1" 200 9659
+INFO 2025-06-02 20:40:56,597 basehttp 25904 10988 "GET /login/ HTTP/1.1" 200 9659
+INFO 2025-06-02 20:41:15,376 autoreload 1240 22748 Watching for file changes with StatReloader
+INFO 2025-06-02 20:41:16,924 basehttp 1240 24376 "GET /login/ HTTP/1.1" 200 9659
+INFO 2025-06-02 20:41:18,738 basehttp 1240 24376 "GET /login/ HTTP/1.1" 200 9659
+INFO 2025-06-02 20:41:24,631 basehttp 1240 21092 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:41:24,633 basehttp 1240 27272 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:42:24,628 basehttp 1240 27192 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:42:24,630 basehttp 1240 16920 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:42:38,399 basehttp 1240 17788 "GET /login/ HTTP/1.1" 200 10868
+INFO 2025-06-02 20:42:49,730 basehttp 1240 14940 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-06-02 20:42:49,772 basehttp 1240 14940 "GET /dashboard/ HTTP/1.1" 200 33578
+INFO 2025-06-02 20:42:49,842 basehttp 1240 14940 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:43:20,620 basehttp 1240 11784 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:43:20,627 basehttp 1240 21832 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:43:24,627 basehttp 1240 12372 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:43:24,628 basehttp 1240 10276 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:43:50,618 basehttp 1240 21832 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:43:50,621 basehttp 1240 11784 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:44:10,413 basehttp 1240 25308 "GET /logout/ HTTP/1.1" 302 0
+ERROR 2025-06-02 20:44:10,504 log 1240 25308 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\views.py", line 51, in login_view
+    return render(request, 'siem_app/login.html')
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 573, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 260: 'static'. Did you forget to register or load this tag?
+ERROR 2025-06-02 20:44:10,529 basehttp 1240 25308 "GET /login/ HTTP/1.1" 500 156298
+INFO 2025-06-02 20:44:24,620 basehttp 1240 12112 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:44:24,626 basehttp 1240 17488 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:44:34,301 autoreload 18164 720 Watching for file changes with StatReloader
+ERROR 2025-06-02 20:44:35,015 log 18164 26324 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\views.py", line 51, in login_view
+    return render(request, 'siem_app/login.html')
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 573, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 260: 'static'. Did you forget to register or load this tag?
+ERROR 2025-06-02 20:44:35,024 basehttp 18164 26324 "GET /login/ HTTP/1.1" 500 156137
+INFO 2025-06-02 20:45:24,626 basehttp 18164 14284 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:45:24,629 basehttp 18164 14932 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:46:04,940 autoreload 25748 3808 Watching for file changes with StatReloader
+INFO 2025-06-02 20:46:08,017 basehttp 25748 15188 "GET /login/ HTTP/1.1" 200 10972
+INFO 2025-06-02 20:46:08,081 basehttp 25748 15188 "GET /static/imagenes/SIEM.png HTTP/1.1" 200 145690
+INFO 2025-06-02 20:46:24,667 basehttp 25748 12052 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:46:24,673 basehttp 25748 17388 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:47:24,630 basehttp 25748 4772 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:47:24,633 basehttp 25748 21632 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:48:24,642 basehttp 25748 11844 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:48:24,643 basehttp 25748 10064 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:49:24,630 basehttp 25748 20896 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:49:24,633 basehttp 25748 26252 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:49:40,830 basehttp 25748 9632 "GET /login/ HTTP/1.1" 302 0
+INFO 2025-06-02 20:49:40,878 basehttp 25748 9632 "GET /dashboard/ HTTP/1.1" 200 33578
+INFO 2025-06-02 20:49:40,996 basehttp 25748 9632 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:49:44,247 basehttp 25748 9632 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-06-02 20:49:44,252 basehttp 25748 9632 "GET /login/ HTTP/1.1" 200 10972
+INFO 2025-06-02 20:49:44,277 basehttp 25748 9632 "GET /static/imagenes/SIEM.png HTTP/1.1" 200 138396
+INFO 2025-06-02 20:50:05,988 basehttp 25748 19192 "GET /login/ HTTP/1.1" 200 10972
+INFO 2025-06-02 20:50:06,011 basehttp 25748 26352 "GET /static/imagenes/SIEM.png HTTP/1.1" 304 0
+INFO 2025-06-02 20:50:11,396 basehttp 25748 26352 "GET /login/ HTTP/1.1" 200 10968
+INFO 2025-06-02 20:50:24,626 basehttp 25748 13040 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:50:24,630 basehttp 25748 25636 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:50:37,531 basehttp 25748 2524 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 20:50:37,535 basehttp 25748 18512 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 20:50:41,281 basehttp 25748 25192 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-06-02 20:50:41,286 basehttp 25748 25192 "GET /login/ HTTP/1.1" 200 10968
+INFO 2025-06-02 20:50:41,317 basehttp 25748 25192 "GET /static/imagenes/SIEM.png HTTP/1.1" 200 138396
+INFO 2025-06-02 20:51:13,019 basehttp 25748 14512 "POST /login/ HTTP/1.1" 200 11211
+INFO 2025-06-02 20:51:13,053 basehttp 25748 14512 "GET /static/imagenes/SIEM.png HTTP/1.1" 304 0
+INFO 2025-06-02 20:51:20,399 basehttp 25748 6476 "POST /login/ HTTP/1.1" 200 11211
+INFO 2025-06-02 20:52:24,189 autoreload 8620 25640 Watching for file changes with StatReloader
+INFO 2025-06-02 20:52:26,738 basehttp 8620 13960 "GET /login/ HTTP/1.1" 200 10923
+INFO 2025-06-02 20:52:26,756 basehttp 8620 13960 "GET /static/imagenes/SIEM.png HTTP/1.1" 304 0
+INFO 2025-06-02 20:52:33,305 basehttp 8620 13960 "POST /login/ HTTP/1.1" 200 11166
+INFO 2025-06-02 20:56:35,000 autoreload 13556 700 Watching for file changes with StatReloader
+INFO 2025-06-02 20:56:38,371 basehttp 13556 18232 "GET /login/ HTTP/1.1" 200 10923
+INFO 2025-06-02 20:56:38,404 basehttp 13556 18232 "GET /static/imagenes/SIEM.png HTTP/1.1" 304 0
+INFO 2025-06-02 20:56:44,340 basehttp 13556 18232 "POST /login/ HTTP/1.1" 200 11166
+INFO 2025-06-02 20:58:24,249 autoreload 13556 700 C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_iess\settings.py changed, reloading.
+INFO 2025-06-02 20:58:25,334 autoreload 1708 23884 Watching for file changes with StatReloader
+INFO 2025-06-02 20:58:29,716 basehttp 1708 9936 "GET /login/ HTTP/1.1" 200 10923
+INFO 2025-06-02 20:58:29,732 basehttp 1708 9936 "GET /static/imagenes/SIEM.png HTTP/1.1" 304 0
+INFO 2025-06-02 20:58:35,878 basehttp 1708 9936 "POST /login/ HTTP/1.1" 200 11166
+INFO 2025-06-02 20:58:43,767 autoreload 1708 23884 C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_iess\settings.py changed, reloading.
+INFO 2025-06-02 20:58:44,931 autoreload 17896 10836 Watching for file changes with StatReloader
+INFO 2025-06-02 20:58:48,377 basehttp 17896 20268 "POST /login/ HTTP/1.1" 200 11166
+INFO 2025-06-02 20:58:54,504 autoreload 26800 14296 Watching for file changes with StatReloader
+INFO 2025-06-02 20:58:55,838 basehttp 26800 25424 "GET /login/ HTTP/1.1" 200 10923
+INFO 2025-06-02 20:59:01,074 basehttp 26800 27480 "POST /login/ HTTP/1.1" 200 11166
+INFO 2025-06-02 21:00:52,844 basehttp 26800 25800 "POST /login/ HTTP/1.1" 200 11166
+INFO 2025-06-02 21:00:52,859 basehttp 26800 25800 "GET /static/imagenes/SIEM.png HTTP/1.1" 304 0
+INFO 2025-06-02 21:03:41,072 basehttp 26800 22584 "GET /login/ HTTP/1.1" 200 10868
+INFO 2025-06-02 21:03:48,795 basehttp 26800 22332 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-06-02 21:03:48,874 basehttp 26800 22332 "GET /dashboard/ HTTP/1.1" 200 33578
+INFO 2025-06-02 21:03:48,967 basehttp 26800 22332 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:04:19,620 basehttp 26800 4076 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:04:19,626 basehttp 26800 15676 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:04:49,630 basehttp 26800 15676 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:04:49,632 basehttp 26800 4076 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:05:19,634 basehttp 26800 15676 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:05:19,634 basehttp 26800 4076 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:05:29,681 basehttp 26800 4076 "GET /dashboard/ HTTP/1.1" 200 33578
+INFO 2025-06-02 21:05:29,752 basehttp 26800 4076 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:05:35,995 basehttp 26800 13460 "GET /logout/ HTTP/1.1" 302 0
+ERROR 2025-06-02 21:05:36,083 log 26800 13460 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\views.py", line 51, in login_view
+    return render(request, 'siem_app/login.html')
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 573, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 259: 'static'. Did you forget to register or load this tag?
+ERROR 2025-06-02 21:05:36,096 basehttp 26800 13460 "GET /login/ HTTP/1.1" 500 156241
+ERROR 2025-06-02 21:07:36,407 log 26800 9960 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\views.py", line 51, in login_view
+    return render(request, 'siem_app/login.html')
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 573, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 259: 'static'. Did you forget to register or load this tag?
+ERROR 2025-06-02 21:07:36,415 basehttp 26800 9960 "GET /login/ HTTP/1.1" 500 156080
+ERROR 2025-06-02 21:07:37,912 log 26800 9960 Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Lady Alexandra\APP_ LADY\versionfinal\siem_iess_project\siem_app\views.py", line 51, in login_view
+    return render(request, 'siem_app/login.html')
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lady Alexandra\AppData\Roaming\Python\Python313\site-packages\django\template\base.py", line 573, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 259: 'static'. Did you forget to register or load this tag?
+ERROR 2025-06-02 21:07:37,920 basehttp 26800 9960 "GET /login/ HTTP/1.1" 500 156080
+INFO 2025-06-02 21:08:48,566 basehttp 26800 2776 "GET /login/ HTTP/1.1" 200 10931
+INFO 2025-06-02 21:08:48,593 basehttp 26800 2776 "GET /static/imagenes/SIEM.png HTTP/1.1" 304 0
+INFO 2025-06-02 21:08:55,100 basehttp 26800 26436 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-06-02 21:08:55,132 basehttp 26800 26436 "GET /dashboard/ HTTP/1.1" 200 33578
+INFO 2025-06-02 21:08:55,193 basehttp 26800 26436 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:09:25,175 basehttp 26800 24592 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:09:25,191 basehttp 26800 24592 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:09:55,621 basehttp 26800 19316 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:09:55,626 basehttp 26800 10808 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:10:13,687 basehttp 26800 25676 "GET /dashboard/ HTTP/1.1" 200 33700
+INFO 2025-06-02 21:10:13,742 basehttp 26800 25676 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:10:44,619 basehttp 26800 2976 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:10:44,620 basehttp 26800 23632 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:11:14,616 basehttp 26800 15368 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:11:14,619 basehttp 26800 6284 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:11:44,630 basehttp 26800 19384 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:11:44,640 basehttp 26800 15092 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:12:14,620 basehttp 26800 8296 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:12:14,621 basehttp 26800 76 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:12:44,624 basehttp 26800 26448 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:12:44,627 basehttp 26800 2368 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:13:14,612 basehttp 26800 14564 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:13:14,626 basehttp 26800 14564 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:13:44,614 basehttp 26800 17608 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:13:44,619 basehttp 26800 11244 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:13:59,496 basehttp 26800 10716 "GET /dashboard/ HTTP/1.1" 200 33700
+INFO 2025-06-02 21:13:59,524 basehttp 26800 10716 "GET /static/imagenes/SIEM.png HTTP/1.1" 304 0
+INFO 2025-06-02 21:13:59,566 basehttp 26800 10716 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:14:22,899 basehttp 26800 20268 "GET /users/ HTTP/1.1" 200 43266
+INFO 2025-06-02 21:14:26,328 basehttp 26800 20268 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-06-02 21:14:26,332 basehttp 26800 20268 "GET /login/ HTTP/1.1" 200 10931
+INFO 2025-06-02 21:14:32,831 basehttp 26800 13180 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-06-02 21:14:32,857 basehttp 26800 13180 "GET /dashboard/ HTTP/1.1" 200 33700
+INFO 2025-06-02 21:14:32,910 basehttp 26800 13180 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:15:03,626 basehttp 26800 2656 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:15:03,638 basehttp 26800 24724 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:15:33,617 basehttp 26800 25196 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:15:33,622 basehttp 26800 12244 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:16:03,620 basehttp 26800 24192 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:16:03,622 basehttp 26800 23404 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:16:33,621 basehttp 26800 23936 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:16:33,631 basehttp 26800 27052 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:17:03,624 basehttp 26800 4508 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:17:03,637 basehttp 26800 4508 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:17:33,628 basehttp 26800 10804 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:17:33,633 basehttp 26800 22396 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:18:03,623 basehttp 26800 9684 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:18:03,624 basehttp 26800 23640 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:19:04,616 basehttp 26800 24368 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:19:04,627 basehttp 26800 24368 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:19:45,917 basehttp 26800 25852 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:19:45,952 basehttp 26800 4500 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:20:03,626 basehttp 26800 11844 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:20:03,630 basehttp 26800 24740 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:20:14,764 basehttp 26800 18528 "GET /dashboard/ HTTP/1.1" 200 33700
+INFO 2025-06-02 21:20:14,783 basehttp 26800 18528 "GET /static/imagenes/SIEM.png HTTP/1.1" 304 0
+INFO 2025-06-02 21:20:14,840 basehttp 26800 18528 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:20:45,618 basehttp 26800 26436 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:20:45,627 basehttp 26800 20932 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:20:53,595 basehttp 26800 25928 "GET /dashboard/ HTTP/1.1" 200 33696
+INFO 2025-06-02 21:20:53,665 basehttp 26800 25928 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:21:24,632 basehttp 26800 25244 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:21:24,634 basehttp 26800 22028 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:21:54,632 basehttp 26800 26892 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:21:54,633 basehttp 26800 12236 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:22:24,624 basehttp 26800 8336 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:22:24,626 basehttp 26800 11092 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:22:54,624 basehttp 26800 1940 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:22:54,637 basehttp 26800 9472 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:23:24,636 basehttp 26800 9296 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:23:24,650 basehttp 26800 20300 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:23:54,633 basehttp 26800 25152 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:23:54,637 basehttp 26800 25216 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:24:24,622 basehttp 26800 11668 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
+INFO 2025-06-02 21:24:24,649 basehttp 26800 11668 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:25:24,646 basehttp 26800 13556 "GET /api/real-dashboard-data/ HTTP/1.1" 200 220
+INFO 2025-06-02 21:25:24,646 basehttp 26800 12432 "GET /api/dashboard-metrics/ HTTP/1.1" 200 173
